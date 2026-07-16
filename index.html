@@ -34,6 +34,19 @@
     frame.addEventListener('load', () => {
       try {
         const doc = frame.contentDocument || frame.contentWindow.document;
+        const hiddenModules = new Set([
+          'Cash Book',
+          'Account Receivable',
+          'Fixed Assets'
+        ]);
+
+        doc.querySelectorAll('.module-card').forEach(card => {
+          const moduleName = (card.dataset.module || '').trim();
+          if (hiddenModules.has(moduleName)) {
+            card.remove();
+          }
+        });
+
         const inventoryCard = [...doc.querySelectorAll('.module-card')]
           .find(card => card.dataset.module === 'Inventory Control');
 
@@ -46,7 +59,7 @@
           }, true);
         }
       } catch (error) {
-        console.error('Unable to activate Inventory Control navigation.', error);
+        console.error('Unable to prepare Account Management home page.', error);
       }
     });
   </script>
