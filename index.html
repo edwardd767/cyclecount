@@ -6,9 +6,24 @@
   <meta name="description" content="AccountX Cycle Count prototype" />
   <title>HotelX | Account Management</title>
   <style>
+    :root { --home-scale: 0.74; }
     * { box-sizing: border-box; }
-    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #f4f4f4; }
-    #homeFrame { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #f4f4f4;
+    }
+    #homeFrame {
+      display: block;
+      width: 135.135135%;
+      height: 135.135135%;
+      border: 0;
+      background: #fff;
+      transform: scale(var(--home-scale));
+      transform-origin: top left;
+    }
   </style>
 </head>
 <body>
