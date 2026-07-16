@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AccountX General Settings Purchase Item Category prototype" />
+  <title>HotelX | General Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sidebar-width: 396px;
+      --topbar-height: 109px;
+      --orange: #ff8a00;
+      --orange-dark: #f37a00;
+      --page: #f3f3f3;
+      --text: #181818;
+      --muted: #555;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--page);
+      color: var(--text);
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body { overflow: hidden; }
+    button, input, select, a { font: inherit; }
+
+    .material-symbols-rounded {
+      line-height: 1;
+      font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 32;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 40;
+      height: var(--topbar-height);
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 43px;
+      background: #fff;
+      border-top: 1px solid #d6d6d6;
+      border-bottom: 1px solid #d0d0d0;
+      box-shadow: 0 2px 5px rgba(0,0,0,.18);
+    }
+
+    .hamburger {
+      width: 33px;
+      height: 33px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #222;
+      cursor: pointer;
+    }
+
+    .hamburger .material-symbols-rounded {
+      font-size: 38px;
+      font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 40;
+    }
+
+    .brand {
+      font-size: 27px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: var(--topbar-height);
+      bottom: 0;
+      z-index: 30;
+      width: var(--sidebar-width);
+      background: #fff;
+      border-right: 1px solid #e2e2e2;
+      overflow-y: auto;
+      transition: transform .18s ease;
+    }
+
+    .profile {
+      position: relative;
+      height: 234px;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(circle at -3% 2%, #fff15e 0 23%, transparent 23.5%),
+        radial-gradient(circle at 71% 38%, #ff7856 0 26%, transparent 26.5%),
+        radial-gradient(ellipse at 31% 105%, rgba(105,56,27,.78) 0 47%, transparent 47.5%),
+        linear-gradient(128deg, #ffd35d 0%, #ffa75f 45%, #ff8754 100%);
+    }
+
+    .profile::before {
+      content: "";
+      position: absolute;
+      left: -45px;
+      bottom: -24px;
+      width: 315px;
+      height: 130px;
+      border-radius: 48%;
+      transform: rotate(-7deg);
+      background: rgba(114,62,33,.55);
+    }
+
+    .profile::after {
+      content: "";
+      position: absolute;
+      right: -72px;
+      top: 18px;
+      width: 260px;
+      height: 190px;
+      border-radius: 50%;
+      transform: rotate(16deg);
+      background: rgba(255,102,73,.30);
+    }
+
+    .avatar {
+      position: absolute;
+      left: 25px;
+      top: 32px;
+      z-index: 2;
+      width: 79px;
+      height: 79px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #202020;
+      color: #fff;
+    }
+
+    .avatar .material-symbols-rounded { font-size: 57px; }
+
+    .profile-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      height: 73px;
+      padding: 13px 58px 8px 25px;
+      background: rgba(112,61,30,.72);
+    }
+
+    .profile-name {
+      display: block;
+      max-width: 310px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 23px;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    .profile-email {
+      display: block;
+      margin-top: 2px;
+      font-size: 15px;
+      line-height: 1.15;
+      font-weight: 500;
+    }
+
+    .profile-chevron {
+      position: absolute;
+      right: 33px;
+      bottom: 23px;
+      z-index: 4;
+      font-size: 34px;
+      font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 36;
+    }
+
+    .side-nav {
+      margin: 0;
+      padding: 17px 19px 25px;
+      list-style: none;
+    }
+
+    .side-nav a {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 13px;
+      margin-bottom: 4px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      color: #111;
+      text-decoration: none;
+      font-size: 23px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .side-nav a:hover { background: #fff8ef; }
+
+    .side-nav a.active {
+      color: var(--orange);
+      background: #fff8ef;
+      border-color: var(--orange);
+      font-weight: 600;
+    }
+
+    .side-icon {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 37px;
+      font-size: 33px;
+      color: #67a6d4;
+    }
+
+    .side-nav li:nth-child(1) .side-icon { color: #ff8b62; }
+    .side-nav li:nth-child(2) .side-icon { color: #6eaad6; }
+    .side-nav li:nth-child(3) .side-icon { color: #6b8db6; }
+    .side-nav li:nth-child(4) .side-icon { color: #d5a33b; }
+    .side-nav li:nth-child(5) .side-icon { color: #479ed2; }
+
+    .version {
+      padding: 4px 82px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .main {
+      position: fixed;
+      left: var(--sidebar-width);
+      right: 0;
+      top: var(--topbar-height);
+      bottom: 0;
+      overflow-y: auto;
+      padding: 39px 26px 28px 39px;
+      background: #f3f3f3;
+      transition: left .18s ease;
+    }
+
+    .module-header {
+      position: relative;
+      height: 110px;
+      overflow: hidden;
+      color: #111;
+      background: linear-gradient(104deg, #ff9713 0%, #ff730e 30%, #ffd01c 56%, #ff7b07 100%);
+    }
+
+    .module-header::before {
+      content: "";
+      position: absolute;
+      left: 180px;
+      top: -106px;
+      width: 645px;
+      height: 190px;
+      border-radius: 0 0 58% 52%;
+      background: rgba(241,70,0,.43);
+      transform: rotate(4deg);
+    }
+
+    .module-header::after {
+      content: "";
+      position: absolute;
+      right: 70px;
+      top: -99px;
+      width: 600px;
+      height: 205px;
+      border-radius: 50%;
+      background: rgba(255,154,0,.46);
+      transform: rotate(-7deg);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 15px 16px 10px;
+    }
+
+    .back-button {
+      position: absolute;
+      left: 16px;
+      top: 15px;
+      width: 47px;
+      height: 47px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      border-radius: 4px;
+      background: #fff;
+      color: var(--orange);
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    }
+
+    .back-button .material-symbols-rounded {
+      font-size: 31px;
+      font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 32;
+    }
+
+    .header-copy {
+      margin-left: 61px;
+      line-height: 1.05;
+    }
+
+    .header-module {
+      display: block;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .header-hotel {
+      display: block;
+      margin-top: 4px;
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .header-rule {
+      height: 1px;
+      margin-top: 12px;
+      background: rgba(255,255,255,.96);
+    }
+
+    .header-section {
+      margin-top: 7px;
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .content-card {
+      margin-top: 12px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.14);
+    }
+
+    .list-header {
+      height: 63px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px 0 20px;
+      border-bottom: 1px solid #ececec;
+      font-size: 21px;
+      font-weight: 700;
+    }
+
+    .list-count { color: var(--orange); }
+
+    .search-button {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #222;
+      cursor: pointer;
+    }
+
+    .search-button .material-symbols-rounded {
+      font-size: 37px;
+      font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 40;
+    }
+
+    .category-list {
+      position: relative;
+      padding: 2px 15px 90px 42px;
+      min-height: 650px;
+    }
+
+    .category-group {
+      position: relative;
+      padding-left: 0;
+    }
+
+    .category-group.has-children::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 88px;
+      bottom: 10px;
+      border-left: 1px dashed #b9b9b9;
+    }
+
+    .category-row {
+      position: relative;
+      min-height: 82px;
+      display: grid;
+      grid-template-columns: 42px minmax(0,1fr) 48px;
+      align-items: center;
+      padding: 10px 2px 7px 0;
+    }
+
+    .category-row.child {
+      margin-left: 42px;
+      min-height: 74px;
+      grid-template-columns: 42px minmax(0,1fr) 48px;
+    }
+
+    .plus-square {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 4px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 29px;
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    .row-copy {
+      min-width: 0;
+      padding: 0 12px 6px 0;
+      border-bottom: 1px solid var(--orange);
+    }
+
+    .row-name {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 23px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .row-subtitle {
+      display: block;
+      margin-top: 2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 400;
+      color: #333;
+    }
+
+    .row-menu-button {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      justify-self: end;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #111;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .row-menu-button:hover { background: #f5f5f5; }
+
+    .row-menu-button .material-symbols-rounded {
+      font-size: 31px;
+      font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 32;
+    }
+
+    .floating-add {
+      position: fixed;
+      right: 26px;
+      bottom: 34px;
+      z-index: 18;
+      width: 90px;
+      height: 90px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,.28);
+    }
+
+    .floating-add .material-symbols-rounded {
+      font-size: 43px;
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+    }
+
+    .context-menu {
+      position: fixed;
+      z-index: 100;
+      width: 156px;
+      padding: 13px 0 8px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 7px 22px rgba(0,0,0,.23);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-5px);
+      transition: opacity .12s ease, transform .12s ease, visibility .12s ease;
+    }
+
+    .context-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .context-item {
+      width: 100%;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      padding: 0 27px;
+      border: 0;
+      background: #fff;
+      color: #282828;
+      text-align: left;
+      cursor: pointer;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .context-item:hover { background: #f7f7f7; }
+    .context-item.disabled { color: #999; background: #f4f4f4; cursor: default; }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      background: rgba(35,35,35,.54);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .15s ease, visibility .15s ease;
+    }
+
+    .modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .edit-dialog {
+      width: min(990px, calc(100vw - 70px));
+      min-height: 432px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 35px rgba(0,0,0,.38);
+      transform: translateY(10px) scale(.99);
+      transition: transform .15s ease;
+    }
+
+    .modal-overlay.show .edit-dialog { transform: translateY(0) scale(1); }
+
+    .dialog-header {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background: #fff9f0;
+      border-bottom: 1px solid #e3d6c6;
+    }
+
+    .dialog-title {
+      color: var(--orange);
+      font-size: 23px;
+      font-weight: 600;
+    }
+
+    .dialog-mode {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .dialog-body { padding: 29px 20px 24px; }
+
+    .field { margin-bottom: 43px; }
+
+    .field-label {
+      display: block;
+      margin-bottom: 6px;
+      color: #878787;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .text-input,
+    .select-input {
+      width: 100%;
+      height: 44px;
+      padding: 0 38px 3px 0;
+      border: 0;
+      border-bottom: 1px solid #9e9e9e;
+      outline: none;
+      background: transparent;
+      color: #292929;
+      font-size: 25px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .select-wrap { position: relative; }
+
+    .select-wrap::after {
+      content: "";
+      position: absolute;
+      right: 12px;
+      top: 18px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 9px solid #888;
+      pointer-events: none;
+    }
+
+    .select-input {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 3px;
+    }
+
+    .dialog-button {
+      min-width: 108px;
+      height: 51px;
+      padding: 0 18px;
+      border-radius: 7px;
+      font-size: 19px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .dialog-button.cancel {
+      border: 2px solid var(--orange);
+      background: #fff;
+      color: var(--orange);
+    }
+
+    .dialog-button.confirm {
+      border: 2px solid var(--orange);
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,.18);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 150;
+      min-width: 320px;
+      max-width: calc(100vw - 40px);
+      padding: 13px 18px;
+      border-radius: 8px;
+      background: rgba(28,28,28,.96);
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%,18px);
+      transition: .18s ease;
+      box-shadow: 0 8px 28px rgba(0,0,0,.25);
+    }
+
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%,0);
+    }
+
+    body.sidebar-collapsed .sidebar { transform: translateX(-100%); }
+    body.sidebar-collapsed .main { left: 0; }
+
+    @media (max-width: 1250px) {
+      :root { --sidebar-width: 320px; }
+      .main { padding-left: 24px; }
+      .side-nav a { font-size: 19px; }
+      .profile-name { font-size: 19px; }
+      .row-name { font-size: 19px; }
+      .row-subtitle { font-size: 17px; }
+    }
+
+    @media (max-width: 780px) {
+      :root { --sidebar-width: 290px; --topbar-height: 78px; }
+      .topbar { padding: 0 23px; }
+      .sidebar { box-shadow: 4px 0 16px rgba(0,0,0,.22); }
+      .main { left: 0; padding: 18px 8px; }
+      body:not(.sidebar-open) .sidebar { transform: translateX(-100%); }
+      body.sidebar-open .sidebar { transform: translateX(0); }
+      .category-list { padding-left: 18px; }
+      .category-row.child { margin-left: 25px; }
+      .row-name { font-size: 16px; }
+      .row-subtitle { font-size: 14px; }
+      .floating-add { width: 64px; height: 64px; }
+      .edit-dialog { width: calc(100vw - 24px); }
+      .text-input, .select-input { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <button id="menuButton" class="hamburger" type="button" aria-label="Toggle menu">
+      <span class="material-symbols-rounded">menu</span>
+    </button>
+    <div class="brand">HotelX</div>
+  </header>
+
+  <aside class="sidebar" aria-label="Main navigation">
+    <section class="profile">
+      <div class="avatar" aria-hidden="true"><span class="material-symbols-rounded">person</span></div>
+      <div class="profile-bar">
+        <span class="profile-name">Hotel Maya Kuala Lum...</span>
+        <span class="profile-email">hmkl@ifca.io</span>
+      </div>
+      <span class="material-symbols-rounded profile-chevron">keyboard_arrow_down</span>
+    </section>
+
+    <nav>
+      <ul class="side-nav">
+        <li><a href="index.html"><span class="material-symbols-rounded side-icon">home</span><span>Home</span></a></li>
+        <li><a class="active" href="general-settings.html"><span class="material-symbols-rounded side-icon">settings</span><span>General Settings</span></a></li>
+        <li><a href="#"><span class="material-symbols-rounded side-icon">settings_applications</span><span>Company Settings</span></a></li>
+        <li><a href="#"><span class="material-symbols-rounded side-icon">analytics</span><span>Digital Reports</span></a></li>
+        <li><a href="#"><span class="material-symbols-rounded side-icon">logout</span><span>Sign Out</span></a></li>
+      </ul>
+    </nav>
+    <div class="version">v3.0.7</div>
+  </aside>
+
+  <main class="main">
+    <section class="module-header" aria-label="General Settings header">
+      <div class="header-content">
+        <button class="back-button" type="button" aria-label="Back to Inventory Control" onclick="location.href='inventory-control.html'">
+          <span class="material-symbols-rounded">chevron_left</span>
+        </button>
+        <div class="header-copy">
+          <span class="header-module">General Settings</span>
+          <span class="header-hotel">Hotel Maya Kuala Lumpur</span>
+        </div>
+        <div class="header-rule"></div>
+        <div class="header-section">... / Purchase Item Category</div>
+      </div>
+    </section>
+
+    <section class="content-card" aria-label="Purchase Item Category">
+      <div class="list-header">
+        <span>Item Category <span class="list-count">(91)</span></span>
+        <button class="search-button" type="button" aria-label="Search categories" id="searchButton">
+          <span class="material-symbols-rounded">search</span>
+        </button>
+      </div>
+
+      <div class="category-list" id="categoryList">
+        <div class="category-group has-children">
+          <div class="category-row" data-name="CA60 - IC General/Allowance" data-gl="CA601006 | Inventory-Others">
+            <span class="plus-square">+</span>
+            <span class="row-copy"><span class="row-name">CA60 - IC General/Allowance</span><span class="row-subtitle">CA601006 | Inventory-Others</span></span>
+            <button class="row-menu-button" type="button" aria-label="Actions for CA60 - IC General Allowance"><span class="material-symbols-rounded">more_vert</span></button>
+          </div>
+          <div class="category-row child" data-name="IC Others" data-gl="CA601006 | Inventory-Others">
+            <span class="plus-square">+</span>
+            <span class="row-copy"><span class="row-name">IC Others</span></span>
+            <button class="row-menu-button" type="button" aria-label="Actions for IC Others"><span class="material-symbols-rounded">more_vert</span></button>
+          </div>
+          <div class="category-row child" data-name="IC Steward" data-gl="CA601006 | Inventory-Others">
+            <span class="plus-square">+</span>
+            <span class="row-copy"><span class="row-name">IC Steward</span></span>
+            <button class="row-menu-button" type="button" aria-label="Actions for IC Steward"><span class="material-symbols-rounded">more_vert</span></button>
+          </div>
+        </div>
+
+        <div class="category-group has-children">
+          <div class="category-row" data-name="CA60 - IC Guest Amenities" data-gl="CA601007 | Inventory-Guest Amenities">
+            <span class="plus-square">+</span>
+            <span class="row-copy"><span class="row-name">CA60 - IC Guest Amenities</span><span class="row-subtitle">CA601007 | Inventory-Guest Amenities</span></span>
+            <button class="row-menu-button" type="button" aria-label="Actions for CA60 - IC Guest Amenities"><span class="material-symbols-rounded">more_vert</span></button>
+          </div>
+          <div class="category-row child" data-name="IC Guest Amenities" data-gl="CA601007 | Inventory-Guest Amenities">
+            <span class="plus-square">+</span>
+            <span class="row-copy"><span class="row-name">IC Guest Amenities</span></span>
+            <button class="row-menu-button" type="button" aria-label="Actions for IC Guest Amenities"><span class="material-symbols-rounded">more_vert</span></button>
+          </div>
+        </div>
+
+        <div class="category-group has-children">
+          <div class="category-row" data-name="CA60 - IC Printing &amp; Stationery" data-gl="CA601005 | Inventory-Printing &amp; Stationery">
+            <span class="plus-square">+</span>
+            <span class="row-copy"><span class="row-name">CA60 - IC Printing &amp; Stationery</span><span class="row-subtitle">CA601005 | Inventory-Printing &amp; Stationery</span></span>
+            <button class="row-menu-button" type="button" aria-label="Actions for CA60 - IC Printing and Stationery"><span class="material-symbols-rounded">more_vert</span></button>
+          </div>
+          <div class="category-row child" data-name="IC Printing &amp; Stationery" data-gl="CA601005 | Inventory-Printing &amp; Stationery">
+            <span class="plus-square">+</span>
+            <span class="row-copy"><span class="row-name">IC Printing &amp; Stationery</span></span>
+            <button class="row-menu-button" type="button" aria-label="Actions for IC Printing and Stationery"><span class="material-symbols-rounded">more_vert</span></button>
+          </div>
+        </div>
+
+        <div class="category-group">
+          <div class="category-row" data-name="CA60 - IC Tobacco" data-gl="CA601003 | Inventory-Tobacco">
+            <span class="plus-square">+</span>
+            <span class="row-copy"><span class="row-name">CA60 - IC Tobacco</span><span class="row-subtitle">CA601003 | Inventory-Tobacco</span></span>
+            <button class="row-menu-button" type="button" aria-label="Actions for CA60 - IC Tobacco"><span class="material-symbols-rounded">more_vert</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="floating-add" type="button" aria-label="Add category" id="addButton">
+    <span class="material-symbols-rounded">add</span>
+  </button>
+
+  <div class="context-menu" id="contextMenu" role="menu" aria-hidden="true">
+    <button class="context-item" type="button" data-action="assign">Assign</button>
+    <button class="context-item" type="button" data-action="edit">Edit</button>
+    <button class="context-item disabled" type="button" data-action="delete" disabled>Delete</button>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <section class="edit-dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+      <header class="dialog-header">
+        <span class="dialog-title" id="dialogTitle">First Parent</span>
+        <span class="dialog-mode">Edit</span>
+      </header>
+      <div class="dialog-body">
+        <div class="field">
+          <label class="field-label" for="nameInput">Name *</label>
+          <input class="text-input" id="nameInput" type="text" value="CA60 - IC Guest Amenities" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="glInput">GL Account Code *</label>
+          <div class="select-wrap">
+            <select class="select-input" id="glInput">
+              <option>CA601007 | Inventory-Guest Amenities</option>
+              <option>CA601006 | Inventory-Others</option>
+              <option>CA601005 | Inventory-Printing &amp; Stationery</option>
+              <option>CA601003 | Inventory-Tobacco</option>
+            </select>
+          </div>
+        </div>
+        <div class="dialog-actions">
+          <button class="dialog-button cancel" type="button" id="cancelButton">Cancel</button>
+          <button class="dialog-button confirm" type="button" id="confirmButton">Confirm</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const body = document.body;
+    const menuButton = document.getElementById('menuButton');
+    const contextMenu = document.getElementById('contextMenu');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const nameInput = document.getElementById('nameInput');
+    const glInput = document.getElementById('glInput');
+    const cancelButton = document.getElementById('cancelButton');
+    const confirmButton = document.getElementById('confirmButton');
+    const toast = document.getElementById('toast');
+    let activeRow = null;
+    let toastTimer;
+
+    menuButton.addEventListener('click', () => {
+      if (window.innerWidth <= 780) {
+        body.classList.toggle('sidebar-open');
+      } else {
+        body.classList.toggle('sidebar-collapsed');
+      }
+    });
+
+    function hideContextMenu() {
+      contextMenu.classList.remove('show');
+      contextMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2300);
+    }
+
+    function openEditDialog(row) {
+      activeRow = row;
+      const currentName = row.dataset.name || '';
+      const currentGl = row.dataset.gl || 'CA601007 | Inventory-Guest Amenities';
+      nameInput.value = currentName;
+
+      const values = [...glInput.options].map(option => option.value);
+      if (!values.includes(currentGl)) {
+        const option = document.createElement('option');
+        option.value = currentGl;
+        option.textContent = currentGl;
+        glInput.appendChild(option);
+      }
+      glInput.value = currentGl;
+      modalOverlay.classList.add('show');
+      modalOverlay.setAttribute('aria-hidden', 'false');
+      setTimeout(() => nameInput.focus(), 80);
+    }
+
+    document.querySelectorAll('.row-menu-button').forEach(button => {
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        activeRow = button.closest('.category-row');
+        const rect = button.getBoundingClientRect();
+        const menuWidth = 156;
+        const menuHeight = 183;
+        let left = rect.right - menuWidth + 8;
+        let top = rect.top + 5;
+        if (left < 12) left = 12;
+        if (left + menuWidth > window.innerWidth - 12) left = window.innerWidth - menuWidth - 12;
+        if (top + menuHeight > window.innerHeight - 12) top = window.innerHeight - menuHeight - 12;
+        contextMenu.style.left = `${left}px`;
+        contextMenu.style.top = `${top}px`;
+        contextMenu.classList.add('show');
+        contextMenu.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    contextMenu.addEventListener('click', event => {
+      const item = event.target.closest('.context-item');
+      if (!item || item.disabled || !activeRow) return;
+      const action = item.dataset.action;
+      hideContextMenu();
+      if (action === 'edit') {
+        openEditDialog(activeRow);
+      } else if (action === 'assign') {
+        showToast(`Assign selected for ${activeRow.dataset.name}.`);
+      }
+    });
+
+    document.addEventListener('click', event => {
+      if (!contextMenu.contains(event.target) && !event.target.closest('.row-menu-button')) {
+        hideContextMenu();
+      }
+    });
+
+    cancelButton.addEventListener('click', () => {
+      modalOverlay.classList.remove('show');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+    });
+
+    modalOverlay.addEventListener('click', event => {
+      if (event.target === modalOverlay) cancelButton.click();
+    });
+
+    confirmButton.addEventListener('click', () => {
+      if (!activeRow) return;
+      const name = nameInput.value.trim();
+      const gl = glInput.value;
+      if (!name) {
+        showToast('Name is required.');
+        nameInput.focus();
+        return;
+      }
+      activeRow.dataset.name = name;
+      activeRow.dataset.gl = gl;
+      const nameElement = activeRow.querySelector('.row-name');
+      const subtitleElement = activeRow.querySelector('.row-subtitle');
+      if (nameElement) nameElement.textContent = name;
+      if (subtitleElement) subtitleElement.textContent = gl;
+      modalOverlay.classList.remove('show');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      showToast('Purchase Item Category updated successfully.');
+    });
+
+    document.getElementById('searchButton').addEventListener('click', () => showToast('Search selected.'));
+    document.getElementById('addButton').addEventListener('click', () => showToast('Add Purchase Item Category selected.'));
+
+    window.addEventListener('resize', hideContextMenu);
+    window.addEventListener('scroll', hideContextMenu, true);
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        hideContextMenu();
+        if (modalOverlay.classList.contains('show')) cancelButton.click();
+      }
+    });
+  </script>
+</body>
+</html>
