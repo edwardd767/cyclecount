@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AccountX Cycle Count prototype based on the supplied HotelX Account Management screen.">
+  <title>HotelX | Account Management</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #f1f1f1;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body { overflow-x: auto; }
+    .prototype {
+      position: relative;
+      width: 100%;
+      min-width: 1100px;
+      max-width: 1912px;
+      min-height: 570px;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,.08);
+    }
+    .prototype__image {
+      display: block;
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .loading {
+      min-height: 570px;
+      display: grid;
+      place-items: center;
+      color: #666;
+      font-size: 16px;
+    }
+    .hotspot {
+      position: absolute;
+      display: none;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .prototype.is-ready .hotspot { display: block; }
+    .hotspot:focus-visible {
+      outline: 3px solid #ff8a00;
+      outline-offset: -3px;
+    }
+    .hotspot--inventory {
+      left: 23.18%;
+      top: 67.70%;
+      width: 74.42%;
+      height: 8.70%;
+    }
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 20;
+      transform: translate(-50%, 20px);
+      min-width: 320px;
+      max-width: calc(100vw - 40px);
+      padding: 14px 18px;
+      border-radius: 8px;
+      background: rgba(35,35,35,.96);
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.4;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+      box-shadow: 0 8px 30px rgba(0,0,0,.25);
+    }
+    .toast.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%,0);
+    }
+    @media (max-width: 1099px) {
+      .prototype { width: 1100px; }
+    }
+  </style>
+</head>
+<body>
+  <main id="prototype" class="prototype" aria-label="HotelX Account Management sample screen">
+    <div id="loading" class="loading">Loading AccountX prototype…</div>
+    <img id="screen" class="prototype__image" width="1912" height="991"
+      alt="HotelX Account Management home screen showing General Ledger, Cash Book, Account Receivable, Account Payable, Inventory Control, General Purchases and Fixed Assets."
+      hidden>
+    <button class="hotspot hotspot--inventory" type="button"
+      aria-label="Open Inventory Control" title="Inventory Control"
+      onclick="showInventoryMessage()"></button>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    Inventory Control selected. The Cycle Count screens will be added in the next prototype stage.
+  </div>
+
+  <script>
+    const imageParts = ["assets/screen-01.txt", "assets/screen-02.txt", "assets/screen-03.txt", "assets/screen-04.txt", "assets/screen-05.txt", "assets/screen-06.txt", "assets/screen-07.txt", "assets/screen-08.txt", "assets/screen-09.txt"];
+
+    async function loadReferenceScreen() {
+      const prototype = document.getElementById('prototype');
+      const screen = document.getElementById('screen');
+      const loading = document.getElementById('loading');
+
+      try {
+        const parts = await Promise.all(
+          imageParts.map(path => fetch(path).then(response => {
+            if (!response.ok) throw new Error(`Unable to load ${path}`);
+            return response.text();
+          }))
+        );
+        screen.src = 'data:image/png;base64,' + parts.join('');
+        await screen.decode();
+        loading.remove();
+        screen.hidden = false;
+        prototype.classList.add('is-ready');
+      } catch (error) {
+        loading.textContent = 'The prototype screen could not be loaded.';
+        console.error(error);
+      }
+    }
+
+    let toastTimer;
+    function showInventoryMessage() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
+    }
+
+    loadReferenceScreen();
+  </script>
+</body>
+</html>
