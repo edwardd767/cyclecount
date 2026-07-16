@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AccountX Inventory Control main menu and Cycle Count prototype" />
+  <title>HotelX | Inventory Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sidebar-width: 285px;
+      --topbar-height: 79px;
+      --orange: #f58200;
+      --page: #f2f2f2;
+      --text: #101010;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--page);
+      color: var(--text);
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body { overflow: hidden; }
+    button, a { font: inherit; }
+
+    .material-symbols-rounded {
+      font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 32;
+      line-height: 1;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 30;
+      height: var(--topbar-height);
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 0 27px;
+      background: #fff;
+      border-top: 1px solid #d8d8d8;
+      border-bottom: 1px solid #c9c9c9;
+      box-shadow: 0 2px 5px rgba(0,0,0,.18);
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      color: #222;
+    }
+
+    .hamburger .material-symbols-rounded { font-size: 29px; }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -.7px;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: var(--topbar-height);
+      bottom: 0;
+      z-index: 20;
+      width: var(--sidebar-width);
+      background: #fff;
+      border-right: 1px solid #e0e0e0;
+      transition: transform .18s ease;
+      overflow-y: auto;
+    }
+
+    .profile {
+      position: relative;
+      height: 171px;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(circle at -3% 1%, #ffea63 0 23%, transparent 23.5%),
+        radial-gradient(circle at 67% 39%, #ff7855 0 27%, transparent 27.5%),
+        radial-gradient(ellipse at 34% 105%, rgba(104,51,27,.70) 0 46%, transparent 46.5%),
+        linear-gradient(128deg, #ffd05b 0%, #ffa55b 45%, #ff8554 100%);
+    }
+
+    .profile::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: 5px;
+      width: 220px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255,110,75,.30);
+      transform: rotate(17deg);
+    }
+
+    .avatar {
+      position: absolute;
+      left: 15px;
+      top: 24px;
+      z-index: 2;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #222;
+      color: #fff;
+    }
+
+    .avatar .material-symbols-rounded { font-size: 43px; }
+
+    .profile-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      height: 54px;
+      padding: 8px 42px 6px 15px;
+      background: rgba(105,54,29,.73);
+    }
+
+    .profile-name {
+      display: block;
+      font-size: 17px;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    .profile-email {
+      display: block;
+      margin-top: 1px;
+      font-size: 12px;
+      line-height: 1.15;
+      font-weight: 500;
+    }
+
+    .profile-chevron {
+      position: absolute;
+      right: 22px;
+      bottom: 17px;
+      z-index: 4;
+      font-size: 27px;
+    }
+
+    .side-nav {
+      margin: 0;
+      padding: 11px 12px 30px;
+      list-style: none;
+    }
+
+    .side-nav a {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 8px;
+      color: #111;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .side-nav a:hover { background: #fff7ed; }
+
+    .side-icon {
+      width: 28px;
+      flex: 0 0 28px;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      color: #5ea8d7;
+    }
+
+    .side-nav li:nth-child(1) .side-icon { color: #ff8b62; }
+    .side-nav li:nth-child(3) .side-icon { color: #d6a53a; }
+    .side-nav li:nth-child(4) .side-icon { color: #6eaed2; }
+    .side-nav li:nth-child(5) .side-icon { color: #469dd1; }
+
+    .version {
+      padding: 1px 60px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .main {
+      position: fixed;
+      left: var(--sidebar-width);
+      right: 0;
+      top: var(--topbar-height);
+      bottom: 0;
+      overflow-y: auto;
+      padding: 30px 8px 12px 27px;
+      background: #f3f3f3;
+      transition: left .18s ease;
+    }
+
+    .module-header {
+      position: relative;
+      height: 81px;
+      overflow: hidden;
+      color: #111;
+      background: linear-gradient(104deg, #ff9815 0%, #ff740e 29%, #ffcf1d 51%, #ff7b08 100%);
+    }
+
+    .module-header::before {
+      content: "";
+      position: absolute;
+      left: 250px;
+      top: -92px;
+      width: 575px;
+      height: 170px;
+      border-radius: 0 0 58% 52%;
+      background: rgba(242,71,0,.42);
+      transform: rotate(4deg);
+    }
+
+    .module-header::after {
+      content: "";
+      position: absolute;
+      left: 540px;
+      top: -83px;
+      width: 520px;
+      height: 166px;
+      border-radius: 50%;
+      background: rgba(255,158,0,.42);
+      transform: rotate(-7deg);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 8px 11px 7px;
+    }
+
+    .back-button {
+      position: absolute;
+      left: 11px;
+      top: 8px;
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      border-radius: 4px;
+      background: #fff;
+      color: #ff8a00;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,.12);
+    }
+
+    .back-button .material-symbols-rounded {
+      font-size: 25px;
+      font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 28;
+    }
+
+    .header-copy {
+      margin-left: 45px;
+      line-height: 1.04;
+    }
+
+    .header-module {
+      display: block;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .header-store {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .header-rule {
+      height: 1px;
+      margin-top: 9px;
+      background: rgba(255,255,255,.95);
+    }
+
+    .header-section {
+      margin-top: 4px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .exit-button {
+      position: absolute;
+      right: 9px;
+      top: 16px;
+      z-index: 3;
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: #fff;
+      color: #ff8500;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,.28);
+    }
+
+    .exit-button .material-symbols-rounded {
+      font-size: 19px;
+      font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 24;
+    }
+
+    .transactions {
+      display: grid;
+      gap: 4px;
+      margin-top: 10px;
+    }
+
+    .transaction-card {
+      position: relative;
+      min-height: 78px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 54px 1fr auto 33px;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px 9px 13px;
+      border: 0;
+      border-radius: 7px;
+      background: #fff;
+      color: #111;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,.17);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    .transaction-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,.20);
+    }
+
+    .transaction-card:focus-visible {
+      outline: 3px solid #ff9400;
+      outline-offset: 1px;
+    }
+
+    .transaction-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 5px;
+      font-size: 31px;
+      overflow: hidden;
+    }
+
+    .icon-enquiry { background: linear-gradient(145deg,#fff3cc,#e6efff); }
+    .icon-issue { background: #fff; }
+    .icon-receipt { background: #fff; }
+    .icon-transfer { background: linear-gradient(145deg,#c9f4d8,#d9e5ff); }
+
+    .tune-icon {
+      position: relative;
+      width: 37px;
+      height: 29px;
+    }
+
+    .tune-icon i {
+      position: absolute;
+      left: 1px;
+      right: 1px;
+      height: 2px;
+      background: #5a646a;
+    }
+
+    .tune-icon i:nth-child(1) { top: 5px; }
+    .tune-icon i:nth-child(2) { top: 14px; }
+    .tune-icon i:nth-child(3) { top: 23px; }
+
+    .tune-icon i::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      width: 7px;
+      height: 7px;
+      border-radius: 1px;
+    }
+
+    .tune-icon i:nth-child(1)::after { left: 10px; background: #ef6259; }
+    .tune-icon i:nth-child(2)::after { left: 23px; background: #f5ae29; }
+    .tune-icon i:nth-child(3)::after { left: 16px; background: #35a8c6; }
+
+    .tune-icon::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -3px;
+      width: 13px;
+      height: 12px;
+      border-radius: 1px 1px 5px 5px;
+      background: linear-gradient(#ffd75d,#ffb62b);
+      box-shadow: -2px -2px 0 #30b3d5;
+    }
+
+    .cycle-icon {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: conic-gradient(#f68a25 0 33%, #4aa9d8 33% 66%, #64bd57 66% 100%);
+    }
+
+    .cycle-icon::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .cycle-icon::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: 4px;
+      border-left: 7px solid #4aa9d8;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      transform: rotate(25deg);
+    }
+
+    .transaction-title {
+      display: block;
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .transaction-meta {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 500;
+    }
+
+    .count-number { color: #ff7900; }
+    .stock-total { color: #ff7c00; font-size: 13px; white-space: nowrap; }
+
+    .card-arrow {
+      justify-self: end;
+      font-size: 27px;
+      color: #111;
+      font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 32;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      z-index: 60;
+      transform: translate(-50%, 18px);
+      min-width: 340px;
+      max-width: calc(100vw - 40px);
+      padding: 13px 18px;
+      border-radius: 8px;
+      background: rgba(28,28,28,.96);
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0;
+      visibility: hidden;
+      transition: .18s ease;
+      box-shadow: 0 8px 28px rgba(0,0,0,.25);
+    }
+
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%,0);
+    }
+
+    body.sidebar-collapsed .sidebar { transform: translateX(-100%); }
+    body.sidebar-collapsed .main { left: 0; }
+
+    @media (max-width: 1100px) {
+      :root { --sidebar-width: 250px; }
+      .main { padding-left: 18px; }
+      .side-nav a { font-size: 15px; }
+    }
+
+    @media (max-width: 760px) {
+      :root { --sidebar-width: 250px; }
+      .sidebar { box-shadow: 4px 0 16px rgba(0,0,0,.20); }
+      .main { left: 0; padding: 18px 8px; }
+      body:not(.sidebar-open) .sidebar { transform: translateX(-100%); }
+      body.sidebar-open .sidebar { transform: translateX(0); }
+      .transaction-card { grid-template-columns: 48px 1fr 27px; }
+      .stock-total { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <button id="menuButton" class="hamburger" type="button" aria-label="Toggle menu">
+      <span class="material-symbols-rounded">menu</span>
+    </button>
+    <div class="brand">HotelX</div>
+  </header>
+
+  <aside class="sidebar" aria-label="Main navigation">
+    <section class="profile">
+      <div class="avatar" aria-hidden="true"><span class="material-symbols-rounded">person</span></div>
+      <div class="profile-bar">
+        <span class="profile-name">Edward (edward)</span>
+        <span class="profile-email">edward@ifca.com</span>
+      </div>
+      <span class="material-symbols-rounded profile-chevron">keyboard_arrow_down</span>
+    </section>
+
+    <nav>
+      <ul class="side-nav">
+        <li><a href="index.html"><span class="material-symbols-rounded side-icon">home</span><span>Home</span></a></li>
+        <li><a href="#"><span class="material-symbols-rounded side-icon">settings</span><span>General Settings</span></a></li>
+        <li><a href="#"><span class="material-symbols-rounded side-icon">analytics</span><span>Digital Reports</span></a></li>
+        <li><a href="#"><span class="material-symbols-rounded side-icon">receipt_long</span><span>Bank EFT</span></a></li>
+        <li><a href="#"><span class="material-symbols-rounded side-icon">logout</span><span>Sign Out</span></a></li>
+      </ul>
+    </nav>
+    <div class="version">v3.0.8</div>
+  </aside>
+
+  <main class="main">
+    <section class="module-header" aria-label="Inventory Control header">
+      <div class="header-content">
+        <button class="back-button" type="button" aria-label="Back to Account Management" onclick="location.href='index.html'">
+          <span class="material-symbols-rounded">chevron_left</span>
+        </button>
+        <div class="header-copy">
+          <span class="header-module">Inventory Control</span>
+          <span class="header-store">General Store</span>
+        </div>
+        <div class="header-rule"></div>
+        <div class="header-section">Main Menu</div>
+      </div>
+      <button class="exit-button" type="button" aria-label="Return to Account Management" onclick="location.href='index.html'">
+        <span class="material-symbols-rounded">logout</span>
+      </button>
+    </section>
+
+    <section class="transactions" aria-label="Inventory Control transactions">
+      <button class="transaction-card" type="button" data-name="Stock Enquiry">
+        <span class="transaction-icon icon-enquiry" aria-hidden="true">📚</span>
+        <span><span class="transaction-title">Stock Enquiry</span><span class="transaction-meta"><span class="count-number">126</span><span>Stock items</span></span></span>
+        <span class="stock-total">30,131.11</span>
+        <span class="material-symbols-rounded card-arrow">chevron_right</span>
+      </button>
+
+      <button class="transaction-card" type="button" data-name="Stock Requisition">
+        <span class="transaction-icon" aria-hidden="true"><span class="tune-icon"><i></i><i></i><i></i></span></span>
+        <span><span class="transaction-title">Stock Requisition</span><span class="transaction-meta"><span class="count-number">1</span><span>Draft</span><span class="count-number">1</span><span>Submitted</span></span></span>
+        <span></span><span class="material-symbols-rounded card-arrow">chevron_right</span>
+      </button>
+
+      <button class="transaction-card" type="button" data-name="Stock Issue">
+        <span class="transaction-icon icon-issue" aria-hidden="true">🛒</span>
+        <span><span class="transaction-title">Stock Issue</span><span class="transaction-meta"><span class="count-number">2</span><span>Draft</span><span class="count-number">1</span><span>Submitted</span></span></span>
+        <span></span><span class="material-symbols-rounded card-arrow">chevron_right</span>
+      </button>
+
+      <button class="transaction-card" type="button" data-name="Stock Receipt">
+        <span class="transaction-icon icon-receipt" aria-hidden="true">📥</span>
+        <span><span class="transaction-title">Stock Receipt</span><span class="transaction-meta"><span class="count-number">0</span><span>Draft</span><span class="count-number">0</span><span>Submitted</span></span></span>
+        <span></span><span class="material-symbols-rounded card-arrow">chevron_right</span>
+      </button>
+
+      <button class="transaction-card" type="button" data-name="Stock Transfer Requisition">
+        <span class="transaction-icon" aria-hidden="true"><span class="tune-icon"><i></i><i></i><i></i></span></span>
+        <span><span class="transaction-title">Stock Transfer Requisition</span><span class="transaction-meta"><span class="count-number">0</span><span>Draft</span><span class="count-number">0</span><span>Submitted</span></span></span>
+        <span></span><span class="material-symbols-rounded card-arrow">chevron_right</span>
+      </button>
+
+      <button class="transaction-card" type="button" data-name="Stock Transfer">
+        <span class="transaction-icon icon-transfer" aria-hidden="true">📦</span>
+        <span><span class="transaction-title">Stock Transfer</span><span class="transaction-meta"><span class="count-number">0</span><span>Draft</span><span class="count-number">0</span><span>Submitted</span></span></span>
+        <span></span><span class="material-symbols-rounded card-arrow">chevron_right</span>
+      </button>
+
+      <button class="transaction-card" type="button" data-name="Stock Qty Adjustment">
+        <span class="transaction-icon" aria-hidden="true"><span class="tune-icon"><i></i><i></i><i></i></span></span>
+        <span><span class="transaction-title">Stock Qty Adjustment</span><span class="transaction-meta"><span class="count-number">1</span><span>Draft</span><span class="count-number">0</span><span>Submitted</span></span></span>
+        <span></span><span class="material-symbols-rounded card-arrow">chevron_right</span>
+      </button>
+
+      <button class="transaction-card" type="button" data-name="Stock Cost Adjustment">
+        <span class="transaction-icon" aria-hidden="true"><span class="tune-icon"><i></i><i></i><i></i></span></span>
+        <span><span class="transaction-title">Stock Cost Adjustment</span><span class="transaction-meta"><span class="count-number">0</span><span>Draft</span><span class="count-number">0</span><span>Submitted</span></span></span>
+        <span></span><span class="material-symbols-rounded card-arrow">chevron_right</span>
+      </button>
+
+      <button class="transaction-card" type="button" data-name="Cycle Count">
+        <span class="transaction-icon" aria-hidden="true"><span class="cycle-icon"></span></span>
+        <span><span class="transaction-title">Cycle Count</span><span class="transaction-meta"><span class="count-number">0</span><span>Draft</span><span class="count-number">0</span><span>Submitted</span></span></span>
+        <span></span><span class="material-symbols-rounded card-arrow">chevron_right</span>
+      </button>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const body = document.body;
+    const menuButton = document.getElementById('menuButton');
+    const toast = document.getElementById('toast');
+    let toastTimer;
+
+    menuButton.addEventListener('click', () => {
+      if (window.innerWidth <= 760) {
+        body.classList.toggle('sidebar-open');
+      } else {
+        body.classList.toggle('sidebar-collapsed');
+      }
+    });
+
+    document.querySelectorAll('.transaction-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const name = card.dataset.name;
+        toast.textContent = name === 'Cycle Count'
+          ? 'Cycle Count selected. The Cycle Count transaction screen will be added next.'
+          : `${name} selected.`;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    });
+  </script>
+</body>
+</html>
