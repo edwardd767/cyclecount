@@ -15,12 +15,10 @@
     body{overflow:hidden}
     button,input,a{font:inherit}
     .material-symbols-rounded{line-height:1;font-variation-settings:"FILL" 1,"wght" 500,"GRAD" 0,"opsz" 32}
-
     .topbar{position:fixed;inset:0 0 auto 0;z-index:40;height:var(--topbar-height);display:flex;align-items:center;gap:22px;padding:0 27px;background:#fff;border-top:1px solid #d8d8d8;border-bottom:1px solid #c9c9c9;box-shadow:0 2px 5px rgba(0,0,0,.18)}
     .hamburger{width:25px;height:25px;display:grid;place-items:center;padding:0;border:0;background:transparent;color:#222;cursor:pointer}
     .hamburger .material-symbols-rounded{font-size:29px;font-variation-settings:"FILL" 0,"wght" 500,"GRAD" 0,"opsz" 32}
     .brand{font-size:21px;line-height:1;font-weight:700;letter-spacing:-.7px}
-
     .sidebar{position:fixed;left:0;top:var(--topbar-height);bottom:0;z-index:30;width:var(--sidebar-width);background:#fff;border-right:1px solid #e2e2e2;overflow-y:auto;transition:transform .18s ease}
     .profile{position:relative;height:171px;overflow:hidden;color:#fff;background:radial-gradient(circle at -3% 1%,#ffea63 0 23%,transparent 23.5%),radial-gradient(circle at 67% 39%,#ff7855 0 27%,transparent 27.5%),radial-gradient(ellipse at 34% 105%,rgba(104,51,27,.70) 0 46%,transparent 46.5%),linear-gradient(128deg,#ffd05b 0%,#ffa55b 45%,#ff8554 100%)}
     .profile::after{content:"";position:absolute;right:-70px;top:5px;width:220px;height:160px;border-radius:50%;background:rgba(255,110,75,.30);transform:rotate(17deg)}
@@ -34,185 +32,53 @@
     .side-nav a{height:52px;display:flex;align-items:center;gap:14px;padding:0 8px;color:#111;text-decoration:none;border-radius:5px;font-size:17px;font-weight:500}
     .side-nav a:hover{background:#fff7ed}
     .side-icon{width:28px;flex:0 0 28px;display:grid;place-items:center;font-size:27px;color:#5ea8d7}
-    .side-nav li:nth-child(1) .side-icon{color:#ff8b62}
-    .side-nav li:nth-child(3) .side-icon{color:#d6a53a}
-    .side-nav li:nth-child(4) .side-icon{color:#6eaed2}
-    .side-nav li:nth-child(5) .side-icon{color:#469dd1}
+    .side-nav li:nth-child(1) .side-icon{color:#ff8b62}.side-nav li:nth-child(3) .side-icon{color:#d6a53a}.side-nav li:nth-child(4) .side-icon{color:#6eaed2}.side-nav li:nth-child(5) .side-icon{color:#469dd1}
     .version{padding:1px 60px;font-size:15px;font-weight:500}
-
     .main{position:fixed;left:var(--sidebar-width);right:0;top:var(--topbar-height);bottom:0;overflow-y:auto;padding:30px 8px 12px 27px;background:#f3f3f3;transition:left .18s ease}
-
     .module-header{position:relative;height:81px;overflow:hidden;color:#111;background:linear-gradient(104deg,#ff9815 0%,#ff740e 29%,#ffcf1d 51%,#ff7b08 100%)}
     .module-header::before{content:"";position:absolute;left:250px;top:-92px;width:575px;height:170px;border-radius:0 0 58% 52%;background:rgba(242,71,0,.42);transform:rotate(4deg)}
     .module-header::after{content:"";position:absolute;left:540px;top:-83px;width:520px;height:166px;border-radius:50%;background:rgba(255,158,0,.42);transform:rotate(-7deg)}
     .header-content{position:relative;z-index:2;height:100%;padding:8px 11px 7px}
     .back-button{position:absolute;left:11px;top:8px;width:35px;height:35px;display:grid;place-items:center;padding:0;border:0;border-radius:4px;background:#fff;color:var(--orange);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.12)}
     .back-button .material-symbols-rounded{font-size:25px;font-variation-settings:"FILL" 0,"wght" 500,"GRAD" 0,"opsz" 28}
-    .header-copy{margin-left:45px;line-height:1.04}
-    .header-module{display:block;color:#fff;font-size:12px;font-weight:700}
-    .header-store{display:block;margin-top:1px;font-size:14px;font-weight:700}
-    .header-rule{height:1px;margin-top:9px;background:rgba(255,255,255,.95)}
-    .header-section{margin-top:4px;font-size:12px;font-weight:700}
-
+    .header-copy{margin-left:45px;line-height:1.04}.header-module{display:block;color:#fff;font-size:12px;font-weight:700}.header-store{display:block;margin-top:1px;font-size:14px;font-weight:700}.header-rule{height:1px;margin-top:9px;background:rgba(255,255,255,.95)}.header-section{margin-top:4px;font-size:12px;font-weight:700}
     .toolbar{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:9px;margin-top:10px}
     .search-panel,.status-button{height:50px;border:0;border-radius:7px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.14)}
-    .search-panel{display:grid;grid-template-columns:43px minmax(0,1fr) 36px 36px;align-items:center;padding:0 9px}
-    .search-icon{display:grid;place-items:center;color:#707070}
-    .search-icon .material-symbols-rounded{font-size:27px;font-variation-settings:"FILL" 0,"wght" 500,"GRAD" 0,"opsz" 32}
-    .search-input{width:100%;height:100%;border:0;outline:0;background:transparent;font-size:17px;color:#222}
-    .search-input::placeholder{color:#ababab}
-    .icon-button{width:32px;height:32px;display:grid;place-items:center;border:0;background:transparent;color:#222;cursor:pointer}
-    .icon-button .material-symbols-rounded{font-size:24px;font-variation-settings:"FILL" 0,"wght" 500,"GRAD" 0,"opsz" 28}
-    .sort-symbol{font-size:24px;font-weight:700;line-height:1}
-
-    .status-wrap{position:relative}
-    .status-button{width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 15px;color:#111;font-size:15px;font-weight:700;cursor:pointer}
-    .status-button .material-symbols-rounded{font-size:21px;font-variation-settings:"FILL" 1,"wght" 700,"GRAD" 0,"opsz" 24;transition:transform .15s ease}
-    .status-wrap.open .status-button .material-symbols-rounded{transform:rotate(180deg)}
-    .status-menu{position:absolute;top:56px;right:0;z-index:90;width:163px;padding:0;background:#fff;box-shadow:0 7px 18px rgba(0,0,0,.22);opacity:0;visibility:hidden;transform:translateY(-4px);transition:.14s ease}
-    .status-wrap.open .status-menu{opacity:1;visibility:visible;transform:translateY(0)}
-    .status-option{position:relative;width:100%;height:43px;display:flex;align-items:center;padding:0 16px;border:0;background:#fff;color:#222;text-align:left;font-size:17px;cursor:pointer}
-    .status-option:hover,.status-option.active{background:#ededed}
-    .status-option.active::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--orange)}
-
-    .empty-state{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:65px;text-align:center}
-    .empty-title{font-size:18px;font-weight:700}
-    .empty-subtitle{margin-top:7px;font-size:13px;color:#333}
-    .floating-add{position:fixed;right:20px;bottom:25px;z-index:18;width:66px;height:66px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:var(--orange);color:#fff;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.28)}
-    .floating-add .material-symbols-rounded{font-size:34px;font-variation-settings:"FILL" 0,"wght" 400,"GRAD" 0,"opsz" 36}
-
-    .toast{position:fixed;left:50%;bottom:25px;z-index:150;min-width:300px;max-width:calc(100vw - 40px);padding:12px 17px;border-radius:8px;background:rgba(28,28,28,.96);color:#fff;text-align:center;font-size:14px;opacity:0;visibility:hidden;transform:translate(-50%,18px);transition:.18s ease;box-shadow:0 8px 28px rgba(0,0,0,.25)}
-    .toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
-    body.sidebar-collapsed .sidebar{transform:translateX(-100%)}
-    body.sidebar-collapsed .main{left:0}
-
-    @media(max-width:1100px){
-      :root{--sidebar-width:250px}
-      .main{padding-left:18px}
-      .side-nav a{font-size:15px}
-      .toolbar{grid-template-columns:minmax(0,1fr) 105px}
-      .search-input{font-size:15px}
-    }
-    @media(max-width:760px){
-      :root{--sidebar-width:250px}
-      .sidebar{box-shadow:4px 0 16px rgba(0,0,0,.20)}
-      .main{left:0;padding:18px 8px}
-      body:not(.sidebar-open) .sidebar{transform:translateX(-100%)}
-      body.sidebar-open .sidebar{transform:translateX(0)}
-      .toolbar{grid-template-columns:1fr}
-      .status-menu{left:0;right:auto;width:100%}
-      .search-panel{grid-template-columns:38px minmax(0,1fr) 34px 34px}
-      .empty-state{padding-top:45px}
-    }
+    .search-panel{display:grid;grid-template-columns:43px minmax(0,1fr) 36px 36px;align-items:center;padding:0 9px}.search-icon{display:grid;place-items:center;color:#707070}.search-icon .material-symbols-rounded{font-size:27px;font-variation-settings:"FILL" 0,"wght" 500,"GRAD" 0,"opsz" 32}.search-input{width:100%;height:100%;border:0;outline:0;background:transparent;font-size:17px;color:#222}.search-input::placeholder{color:#ababab}.icon-button{width:32px;height:32px;display:grid;place-items:center;border:0;background:transparent;color:#222;cursor:pointer}.icon-button .material-symbols-rounded{font-size:24px;font-variation-settings:"FILL" 0,"wght" 500,"GRAD" 0,"opsz" 28}.sort-symbol{font-size:24px;font-weight:700;line-height:1}
+    .status-wrap{position:relative}.status-button{width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 15px;color:#111;font-size:15px;font-weight:700;cursor:pointer}.status-button .material-symbols-rounded{font-size:21px;font-variation-settings:"FILL" 1,"wght" 700,"GRAD" 0,"opsz" 24;transition:transform .15s ease}.status-wrap.open .status-button .material-symbols-rounded{transform:rotate(180deg)}
+    .status-menu{position:absolute;top:56px;right:0;z-index:90;width:163px;padding:0;background:#fff;box-shadow:0 7px 18px rgba(0,0,0,.22);opacity:0;visibility:hidden;transform:translateY(-4px);transition:.14s ease}.status-wrap.open .status-menu{opacity:1;visibility:visible;transform:translateY(0)}.status-option{position:relative;width:100%;height:43px;display:flex;align-items:center;padding:0 16px;border:0;background:#fff;color:#222;text-align:left;font-size:17px;cursor:pointer}.status-option:hover,.status-option.active{background:#ededed}.status-option.active::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--orange)}
+    .empty-state{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:65px;text-align:center}.empty-title{font-size:18px;font-weight:700}.empty-subtitle{margin-top:7px;font-size:13px;color:#333}.floating-add{position:fixed;right:20px;bottom:25px;z-index:18;width:66px;height:66px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:var(--orange);color:#fff;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.28)}.floating-add .material-symbols-rounded{font-size:34px;font-variation-settings:"FILL" 0,"wght" 400,"GRAD" 0,"opsz" 36}
+    .toast{position:fixed;left:50%;bottom:25px;z-index:150;min-width:300px;max-width:calc(100vw - 40px);padding:12px 17px;border-radius:8px;background:rgba(28,28,28,.96);color:#fff;text-align:center;font-size:14px;opacity:0;visibility:hidden;transform:translate(-50%,18px);transition:.18s ease;box-shadow:0 8px 28px rgba(0,0,0,.25)}.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}body.sidebar-collapsed .sidebar{transform:translateX(-100%)}body.sidebar-collapsed .main{left:0}
+    @media(max-width:1100px){:root{--sidebar-width:250px}.main{padding-left:18px}.side-nav a{font-size:15px}.toolbar{grid-template-columns:minmax(0,1fr) 105px}.search-input{font-size:15px}}
+    @media(max-width:760px){:root{--sidebar-width:250px}.sidebar{box-shadow:4px 0 16px rgba(0,0,0,.20)}.main{left:0;padding:18px 8px}body:not(.sidebar-open) .sidebar{transform:translateX(-100%)}body.sidebar-open .sidebar{transform:translateX(0)}.toolbar{grid-template-columns:1fr}.status-menu{left:0;right:auto;width:100%}.search-panel{grid-template-columns:38px minmax(0,1fr) 34px 34px}.empty-state{padding-top:45px}}
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <button id="menuButton" class="hamburger" type="button" aria-label="Toggle menu"><span class="material-symbols-rounded">menu</span></button>
-    <div class="brand">HotelX</div>
-  </header>
-
+  <header class="topbar"><button id="menuButton" class="hamburger" type="button" aria-label="Toggle menu"><span class="material-symbols-rounded">menu</span></button><div class="brand">HotelX</div></header>
   <aside class="sidebar" aria-label="Main navigation">
-    <section class="profile">
-      <div class="avatar" aria-hidden="true"><span class="material-symbols-rounded">person</span></div>
-      <div class="profile-bar"><span class="profile-name">Edward (edward)</span><span class="profile-email">edward@ifca.com</span></div>
-      <span class="material-symbols-rounded profile-chevron">keyboard_arrow_down</span>
-    </section>
-    <nav>
-      <ul class="side-nav">
-        <li><a href="index.html"><span class="material-symbols-rounded side-icon">home</span><span>Home</span></a></li>
-        <li><a href="general-settings.html"><span class="material-symbols-rounded side-icon">settings</span><span>General Settings</span></a></li>
-        <li><a href="#"><span class="material-symbols-rounded side-icon">analytics</span><span>Digital Reports</span></a></li>
-        <li><a href="#"><span class="material-symbols-rounded side-icon">receipt_long</span><span>Bank EFT</span></a></li>
-        <li><a href="#"><span class="material-symbols-rounded side-icon">logout</span><span>Sign Out</span></a></li>
-      </ul>
-    </nav>
-    <div class="version">v3.0.8</div>
+    <section class="profile"><div class="avatar" aria-hidden="true"><span class="material-symbols-rounded">person</span></div><div class="profile-bar"><span class="profile-name">Edward (edward)</span><span class="profile-email">edward@ifca.com</span></div><span class="material-symbols-rounded profile-chevron">keyboard_arrow_down</span></section>
+    <nav><ul class="side-nav"><li><a href="index.html"><span class="material-symbols-rounded side-icon">home</span><span>Home</span></a></li><li><a href="general-settings.html"><span class="material-symbols-rounded side-icon">settings</span><span>General Settings</span></a></li><li><a href="#"><span class="material-symbols-rounded side-icon">analytics</span><span>Digital Reports</span></a></li><li><a href="#"><span class="material-symbols-rounded side-icon">receipt_long</span><span>Bank EFT</span></a></li><li><a href="#"><span class="material-symbols-rounded side-icon">logout</span><span>Sign Out</span></a></li></ul></nav><div class="version">v3.0.8</div>
   </aside>
-
   <main class="main">
-    <section class="module-header" aria-label="Cycle Count header">
-      <div class="header-content">
-        <button class="back-button" type="button" aria-label="Back to Inventory Control" onclick="location.href='inventory-control.html'"><span class="material-symbols-rounded">chevron_left</span></button>
-        <div class="header-copy"><span class="header-module">Inventory Control</span><span class="header-store">General Store</span></div>
-        <div class="header-rule"></div>
-        <div class="header-section">... / Cycle Count</div>
-      </div>
-    </section>
-
+    <section class="module-header" aria-label="Cycle Count header"><div class="header-content"><button class="back-button" type="button" aria-label="Back to Inventory Control" onclick="location.href='inventory-control.html'"><span class="material-symbols-rounded">chevron_left</span></button><div class="header-copy"><span class="header-module">Inventory Control</span><span class="header-store">General Store</span></div><div class="header-rule"></div><div class="header-section">... / Cycle Count</div></div></section>
     <section class="toolbar" aria-label="Cycle Count filters">
-      <div class="search-panel">
-        <span class="search-icon"><span class="material-symbols-rounded">search</span></span>
-        <input id="searchInput" class="search-input" type="search" placeholder="Search here.." aria-label="Search Cycle Count" />
-        <button id="filterButton" class="icon-button" type="button" aria-label="Filter"><span class="material-symbols-rounded">tune</span></button>
-        <button id="sortButton" class="icon-button" type="button" aria-label="Sort"><span class="sort-symbol">↕</span></button>
-      </div>
-      <div id="statusWrap" class="status-wrap">
-        <button id="statusButton" class="status-button" type="button" aria-haspopup="listbox" aria-expanded="false"><span id="statusLabel">Draft</span><span class="material-symbols-rounded">arrow_drop_down</span></button>
-        <div id="statusMenu" class="status-menu" role="listbox" aria-label="Cycle Count status">
-          <button class="status-option" type="button" data-status="All">All</button>
-          <button class="status-option active" type="button" data-status="Draft">Draft</button>
-          <button class="status-option" type="button" data-status="Submitted">Submitted</button>
-          <button class="status-option" type="button" data-status="Rejected">Rejected</button>
-          <button class="status-option" type="button" data-status="Completed">Completed</button>
-        </div>
-      </div>
+      <div class="search-panel"><span class="search-icon"><span class="material-symbols-rounded">search</span></span><input id="searchInput" class="search-input" type="search" placeholder="Search here.." aria-label="Search Cycle Count" /><button id="filterButton" class="icon-button" type="button" aria-label="Filter"><span class="material-symbols-rounded">tune</span></button><button id="sortButton" class="icon-button" type="button" aria-label="Sort"><span class="sort-symbol">↕</span></button></div>
+      <div id="statusWrap" class="status-wrap"><button id="statusButton" class="status-button" type="button" aria-haspopup="listbox" aria-expanded="false"><span id="statusLabel">Draft</span><span class="material-symbols-rounded">arrow_drop_down</span></button><div id="statusMenu" class="status-menu" role="listbox" aria-label="Cycle Count status"><button class="status-option" type="button" data-status="All">All</button><button class="status-option active" type="button" data-status="Draft">Draft</button><button class="status-option" type="button" data-status="Submitted">Submitted</button><button class="status-option" type="button" data-status="Rejected">Rejected</button><button class="status-option" type="button" data-status="Completed">Completed</button></div></div>
     </section>
-
-    <section class="empty-state" aria-live="polite">
-      <div class="empty-title">No Record found</div>
-      <div class="empty-subtitle">Add a new record now.</div>
-    </section>
+    <section class="empty-state" aria-live="polite"><div class="empty-title">No Record found</div><div class="empty-subtitle">Add a new record now.</div></section>
   </main>
-
   <button id="addButton" class="floating-add" type="button" aria-label="Add Cycle Count"><span class="material-symbols-rounded">add</span></button>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
   <script>
-    const body=document.body;
-    const menuButton=document.getElementById('menuButton');
-    const statusWrap=document.getElementById('statusWrap');
-    const statusButton=document.getElementById('statusButton');
-    const statusLabel=document.getElementById('statusLabel');
-    const toast=document.getElementById('toast');
-    let toastTimer;
-
-    menuButton.addEventListener('click',()=>{
-      if(innerWidth<=760)body.classList.toggle('sidebar-open');
-      else body.classList.toggle('sidebar-collapsed');
-    });
-
-    statusButton.addEventListener('click',event=>{
-      event.stopPropagation();
-      const open=statusWrap.classList.toggle('open');
-      statusButton.setAttribute('aria-expanded',String(open));
-    });
-
-    document.querySelectorAll('.status-option').forEach(option=>option.addEventListener('click',()=>{
-      document.querySelectorAll('.status-option').forEach(item=>item.classList.remove('active'));
-      option.classList.add('active');
-      statusLabel.textContent=option.dataset.status;
-      statusWrap.classList.remove('open');
-      statusButton.setAttribute('aria-expanded','false');
-    }));
-
-    document.addEventListener('click',event=>{
-      if(!statusWrap.contains(event.target)){
-        statusWrap.classList.remove('open');
-        statusButton.setAttribute('aria-expanded','false');
-      }
-    });
-
+    const body=document.body,menuButton=document.getElementById('menuButton'),statusWrap=document.getElementById('statusWrap'),statusButton=document.getElementById('statusButton'),statusLabel=document.getElementById('statusLabel'),toast=document.getElementById('toast');let toastTimer;
+    menuButton.addEventListener('click',()=>{if(innerWidth<=760)body.classList.toggle('sidebar-open');else body.classList.toggle('sidebar-collapsed')});
+    statusButton.addEventListener('click',event=>{event.stopPropagation();const open=statusWrap.classList.toggle('open');statusButton.setAttribute('aria-expanded',String(open))});
+    document.querySelectorAll('.status-option').forEach(option=>option.addEventListener('click',()=>{document.querySelectorAll('.status-option').forEach(item=>item.classList.remove('active'));option.classList.add('active');statusLabel.textContent=option.dataset.status;statusWrap.classList.remove('open');statusButton.setAttribute('aria-expanded','false')}));
+    document.addEventListener('click',event=>{if(!statusWrap.contains(event.target)){statusWrap.classList.remove('open');statusButton.setAttribute('aria-expanded','false')}});
     document.getElementById('filterButton').addEventListener('click',()=>showToast('Cycle Count filter selected.'));
     document.getElementById('sortButton').addEventListener('click',()=>showToast('Cycle Count sorting selected.'));
-    document.getElementById('addButton').addEventListener('click',()=>showToast('Create Cycle Count selected.'));
-
-    function showToast(message){
-      toast.textContent=message;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
-    }
+    document.getElementById('addButton').addEventListener('click',()=>{location.href='cycle-count-new.html'});
+    function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)}
   </script>
 </body>
 </html>
