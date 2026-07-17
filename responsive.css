@@ -1,0 +1,97 @@
+/* Shared compact and responsive layout for the Cycle Count prototype */
+:root{
+  --responsive-sidebar:240px;
+  --responsive-topbar:64px;
+}
+html{font-size:14px}
+body{font-size:14px}
+
+/* Compact desktop sizing */
+.topbar{height:var(--responsive-topbar)!important;padding-left:20px!important;padding-right:20px!important;gap:16px!important}
+.brand{font-size:20px!important}
+.sidebar{top:var(--responsive-topbar)!important;width:var(--responsive-sidebar)!important}
+.main{top:var(--responsive-topbar)!important;left:var(--responsive-sidebar)!important;padding:12px!important}
+.footer{left:var(--responsive-sidebar)!important;height:64px!important}
+.profile,.profile-panel{height:150px!important}
+.avatar{width:52px!important;height:52px!important;top:20px!important;left:14px!important}
+.avatar .material-symbols-rounded,.avatar span{font-size:38px!important}
+.profilebar b,.profile-name{font-size:15px!important}
+.profilebar small,.profile-email{font-size:11px!important}
+.nav a,.side-nav a,.nav-item{height:44px!important;font-size:14px!important;gap:10px!important}
+.version{font-size:12px!important}
+.module-header,.hero{min-height:0!important;height:74px!important}
+.headcopy .small,.header-module,.hero-product{font-size:11px!important}
+.headcopy .store,.header-store,.hero-title{font-size:14px!important}
+.crumb,.header-section,.stock-recon,.hero-section{font-size:12px!important}
+.toolbar{gap:8px!important;margin-top:8px!important}
+.search,.tool,.chip{height:42px!important}
+.search input{font-size:14px!important}
+.tool,.chip{font-size:12px!important;padding-left:12px!important;padding-right:12px!important}
+.chip{min-width:96px!important}.chip b{font-size:14px!important}
+.selectbar{height:48px!important}.bulk-btn{height:34px!important;font-size:13px!important}
+.table{font-size:12px!important}
+.table th{font-size:11px!important}
+.table th,.table td{padding:9px 8px!important}
+.focusBtn{font-size:12px!important}
+.status,.department-badge{font-size:10px!important;padding:4px 7px!important}
+.pager{padding:9px 12px!important;font-size:12px!important}
+.action-panel-body{padding:10px 12px!important}.open-action{height:40px!important;min-width:160px!important;font-size:13px!important}
+.footer button{height:44px!important;min-width:140px!important;font-size:15px!important}
+.transaction-card,.module-card{min-height:68px!important;padding-top:9px!important;padding-bottom:9px!important}
+.transaction-title,.module-title{font-size:13px!important}.transaction-meta,.module-subtitle{font-size:11px!important}
+.modal{max-height:92vh!important}.modal-head{height:52px!important}.modal-title{font-size:16px!important}.modal-body{padding:14px!important}.modal-foot{min-height:60px!important}
+
+/* Tablet */
+@media (max-width:1100px){
+  :root{--responsive-sidebar:210px}
+  .chips{display:grid!important;grid-template-columns:repeat(2,minmax(90px,1fr))!important}
+  .toolbar{grid-template-columns:1fr!important}
+  .left-tools{width:100%!important}
+  .table{min-width:900px!important}
+  .panel{overflow-x:auto!important}
+}
+
+/* Mobile */
+@media (max-width:768px){
+  :root{--responsive-topbar:56px}
+  html,body{overflow:auto!important;font-size:13px!important}
+  .topbar{height:56px!important;padding:0 14px!important;position:fixed!important}
+  .brand{font-size:18px!important}
+  .sidebar{position:fixed!important;top:56px!important;left:0!important;bottom:0!important;width:min(82vw,280px)!important;z-index:500!important;transform:translateX(-105%)!important;box-shadow:4px 0 18px rgba(0,0,0,.25)!important;transition:transform .2s ease!important}
+  body.mobile-menu-open .sidebar{transform:translateX(0)!important}
+  body.mobile-menu-open::after{content:"";position:fixed;inset:56px 0 0;z-index:490;background:rgba(0,0,0,.35)}
+  .main{position:relative!important;left:0!important;right:auto!important;top:auto!important;bottom:auto!important;margin-top:56px!important;padding:8px!important;overflow:visible!important}
+  .footer{position:sticky!important;left:0!important;right:0!important;bottom:0!important;height:auto!important;padding:8px!important;gap:8px!important;z-index:80!important}
+  .footer button{flex:1!important;min-width:0!important;height:44px!important}
+  .module-header,.hero{height:72px!important}
+  .toolbar{display:flex!important;flex-direction:column!important;gap:7px!important}
+  .left-tools{display:grid!important;grid-template-columns:1fr 42px 68px!important;gap:6px!important}
+  .search{min-width:0!important;width:100%!important;height:42px!important}
+  .filter-icon{width:42px!important}
+  .chips{display:grid!important;grid-template-columns:repeat(2,1fr)!important;width:100%!important;gap:6px!important}
+  .chip{min-width:0!important;width:100%!important;height:44px!important}
+  .selectbar{height:auto!important;min-height:48px!important;flex-wrap:wrap!important;padding:8px!important;gap:7px!important}
+  .bulk-btn{flex:1!important;min-width:130px!important}
+  .panel{overflow-x:auto!important;border-radius:6px!important}
+  .table{min-width:780px!important}
+  .action-panel-body{position:sticky!important;left:0!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .open-action{min-width:0!important;width:100%!important}
+  .modal-backdrop{align-items:flex-end!important;padding:0!important}
+  .modal,.modal.wide,.modal.advanced-modal{width:100%!important;max-width:none!important;max-height:92vh!important;border-radius:14px 14px 0 0!important;overflow:hidden!important}
+  .advanced-modal .modal-body,.modal-body{overflow:auto!important}
+  .multi-menu{position:static!important;max-height:36vh!important;overflow:auto!important;margin-top:6px!important}
+  .summary-grid{grid-template-columns:repeat(2,1fr)!important}
+  .allocation-summary{grid-template-columns:1fr!important}
+  .split-table{min-width:680px!important}
+  .modal-foot{position:sticky!important;bottom:0!important}.modal-btn{flex:1!important;min-width:0!important}
+  .transactions,.modules{gap:6px!important}.transaction-card,.module-card{grid-template-columns:44px 1fr 28px!important}
+  .stock-total{display:none!important}
+}
+
+@media (max-width:420px){
+  .chips{grid-template-columns:1fr 1fr!important}
+  .left-tools{grid-template-columns:1fr 40px!important}
+  .left-tools #resetButton,.left-tools .tool:not(.filter-icon){grid-column:1/-1!important;width:100%!important}
+  .action-panel-body{grid-template-columns:1fr!important}
+  .table{min-width:720px!important}
+}
