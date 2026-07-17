@@ -15,7 +15,12 @@
     .main{position:fixed;left:var(--sidebar);right:0;top:var(--topbar);bottom:76px;overflow:auto;padding:16px;background:var(--page)}
     .module-header{height:82px;position:relative;overflow:hidden;background:linear-gradient(105deg,#ff9c16,#ff7112 31%,#ffd32a 53%,#ff7907);padding:8px 12px}.module-header:before{content:"";position:absolute;left:250px;top:-90px;width:600px;height:170px;border-radius:0 0 55% 55%;background:#ef4e0066}.close{position:absolute;left:11px;top:9px;width:36px;height:36px;border:0;border-radius:5px;background:#fff;color:var(--orange);cursor:pointer}.headcopy{position:relative;margin-left:48px;line-height:1.05}.headcopy .small{color:#fff;font-size:12px;font-weight:700}.headcopy .store{font-size:15px;font-weight:700}.rule{height:1px;background:#fff;margin-top:10px}.crumb{margin-top:4px;font-size:12px;font-weight:700}.stock-recon{position:absolute;right:14px;bottom:8px;font-size:13px;font-weight:700}
     .toolbar{display:grid;grid-template-columns:minmax(300px,1fr) auto;gap:12px;margin-top:10px}.left-tools,.chips{display:flex;gap:8px;align-items:center}.search{height:44px;flex:1;min-width:230px;display:flex;align-items:center;gap:8px;padding:0 12px;background:#fff;border:1px solid var(--line);border-radius:6px}.search input{border:0;outline:0;width:100%}.tool,.chip{height:44px;border:1px solid var(--line);border-radius:6px;background:#fff;padding:0 15px}.chip{min-width:105px;text-align:center;font-size:11px}.chip b{display:block;font-size:13px}.red{color:red}.green{color:var(--green)}
-    .workspace{display:grid;grid-template-columns:minmax(650px,1.08fr) minmax(420px,.72fr);gap:10px;margin-top:10px}.panel{background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden}.selectbar{height:48px;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid var(--line)}.bulk-btn{height:34px;border:1px solid var(--line);border-radius:5px;background:#fff;padding:0 12px;cursor:pointer}.count{font-weight:700;font-size:13px}.table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}.table th,.table td{padding:10px 7px;border-bottom:1px solid #eee;text-align:left;vertical-align:middle}.table th{font-size:10px;background:#fafafa}.table td.num{text-align:right}.table tr.selected{background:#fff1e3}.table input{accent-color:var(--orange)}.table th:nth-child(1){width:34px}.table th:nth-child(2){width:18%}.table th:nth-child(3){width:20%}.table th:nth-child(4),.table th:nth-child(5),.table th:nth-child(6){width:10.5%}.table th:nth-child(7){width:11%}.table th:nth-child(8){width:19%}.status{display:inline-block;padding:3px 7px;border-radius:4px;font-size:9px;white-space:nowrap}.variance{background:#ffe4e8;color:red}.nodiff{background:#dcf8e2;color:#16962a}.department-badge{display:inline-flex;align-items:center;max-width:100%;padding:4px 7px;border:1px solid #ffd09a;border-radius:5px;background:#fff8ef;color:#7b4300;font-size:9.5px;font-weight:600;line-height:1.2}.department-badge.updated{border-color:#ff9c2b;background:#fff0dc;color:#c45d00}.pager{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;font-size:11px}.no-diff-box{margin:0 10px 10px;padding:13px;border:1px solid #dcefdc;border-radius:6px;background:#fbfffb}.no-diff-box b{color:#16962a}.help{margin:0 10px 10px;padding:13px;border-radius:6px;background:#edf5ff;color:#174a98;font-size:11px}
+    .workspace{display:grid;grid-template-columns:minmax(650px,1.08fr) minmax(420px,.72fr);gap:10px;margin-top:10px}.panel{background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden}.selectbar{height:48px;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid var(--line)}.bulk-btn{height:34px;border:1px solid var(--line);border-radius:5px;background:#fff;padding:0 12px;cursor:pointer}.count{font-weight:700;font-size:13px}
+    .table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}.table th,.table td{padding:10px 7px;border-bottom:1px solid #eee;text-align:left;vertical-align:middle}.table th{font-size:10px;background:#fafafa}.table td.num{text-align:right}.table tr.selected{background:#fff1e3}.table input{accent-color:var(--orange)}.table th:nth-child(1){width:34px}.table th:nth-child(2){width:18%}.table th:nth-child(3){width:20%}.table th:nth-child(4),.table th:nth-child(5),.table th:nth-child(6){width:10.5%}.table th:nth-child(7){width:11%}.table th:nth-child(8){width:19%}
+    .status{display:inline-block;padding:3px 7px;border-radius:4px;font-size:9px;white-space:nowrap}.variance{background:#ffe4e8;color:red}.nodiff{background:#dcf8e2;color:#16962a}.splitstatus{background:#fff0dc;color:#c45d00}
+    .department-badge{display:inline-flex;align-items:center;max-width:100%;padding:4px 7px;border:1px solid #ffd09a;border-radius:5px;background:#fff8ef;color:#7b4300;font-size:9.5px;font-weight:600;line-height:1.2}.department-badge.updated{border-color:#ff9c2b;background:#fff0dc;color:#c45d00}
+    .split-row{background:#fffaf4}.split-row td{border-bottom:1px dashed #ffd7ad}.split-row.first-split td{border-top:2px solid #ffb65c}.split-row .split-item{display:flex;align-items:center;gap:6px}.split-line{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;border-radius:50%;background:#fff0dc;color:#c45d00;font-size:9px;font-weight:700}.split-qty{color:var(--red);font-weight:700}.split-note{display:block;margin-top:3px;color:#777;font-size:8px;font-weight:400}
+    .pager{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;font-size:11px}.no-diff-box{margin:0 10px 10px;padding:13px;border:1px solid #dcefdc;border-radius:6px;background:#fbfffb}.no-diff-box b{color:#16962a}.help{margin:0 10px 10px;padding:13px;border-radius:6px;background:#edf5ff;color:#174a98;font-size:11px}
     .action-panel-head{padding:13px 15px;border-bottom:1px solid var(--line);font-size:16px;font-weight:700}.action-panel-body{padding:18px}.action-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px;border:1px solid var(--line);border-radius:8px;background:#fff;margin-bottom:12px}.action-card:last-child{margin-bottom:0}.action-card h3{margin:0;font-size:15px}.action-card p{margin:4px 0 0;color:#666;font-size:11px}.open-action{min-width:155px;height:42px;border:0;border-radius:6px;background:var(--orange);color:#fff;font-weight:700;cursor:pointer}.open-action.secondary{background:#fff;color:var(--orange);border:1px solid var(--orange)}
     .footer{position:fixed;left:var(--sidebar);right:0;bottom:0;height:76px;background:#fff;display:flex;align-items:center;justify-content:flex-end;gap:20px;padding:0 18px;box-shadow:0 -3px 12px #0002}.footer button{min-width:150px;height:48px;border:0;border-radius:6px;color:#fff;font-size:17px;font-weight:700}.reject{background:var(--red)}.approve{background:var(--green)}
     .modal-backdrop{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(0,0,0,.48)}.modal-backdrop.show{display:flex}.modal{width:min(760px,96vw);max-height:88vh;display:flex;flex-direction:column;border-radius:8px;background:#fff;box-shadow:0 18px 55px rgba(0,0,0,.35);overflow:hidden}.modal.wide{width:min(980px,97vw)}.modal-head{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);background:#fff8ef}.modal-title{font-size:17px;font-weight:700;color:#111}.modal-close{width:34px;height:34px;border:0;border-radius:50%;background:transparent;cursor:pointer}.modal-body{padding:18px;overflow:auto}.modal-foot{min-height:72px;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:12px 18px;border-top:1px solid var(--line);background:#fff}.modal-btn{min-width:125px;height:42px;border-radius:6px;font-weight:700;cursor:pointer}.modal-cancel{border:1px solid #ccc;background:#fff;color:#222}.modal-confirm{border:0;background:var(--orange);color:#fff}.section-title{font-size:14px;font-weight:700}.sub{font-size:11px;color:#666;margin:3px 0 10px}.field{margin-top:10px}.field label{display:block;font-size:11px;font-weight:700;margin-bottom:5px}.field select,.field input,.field textarea{width:100%;border:1px solid #ccc;border-radius:5px;background:#fff;padding:9px 11px;font-size:12px}.chips-selected{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.tag{padding:6px 10px;border:1px solid var(--line);border-radius:5px;background:#fff;font-size:11px}.checks{display:grid;gap:6px;margin:12px 0;font-size:11px}.focused{color:#1761bd;font-size:11px;font-weight:700;margin-top:2px}.summary-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0}.summary-grid div{padding:8px;background:#fafafa;border:1px solid #eee;font-size:10px}.summary-grid b{display:block;margin-top:3px;font-size:12px}.split-table{width:100%;border-collapse:collapse;font-size:11px}.split-table th,.split-table td{border:1px solid #eee;padding:6px}.split-table select,.split-table input{width:100%;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:11px}.delete{border:0;background:transparent;color:red;cursor:pointer}.add-line{display:block;margin:8px auto;border:1px dashed #bbb;background:#fff;border-radius:5px;padding:7px 18px;cursor:pointer}.allocation-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}.allocation-summary div{padding:8px;text-align:center;background:#fafafa;border:1px solid #eee;font-size:10px}.allocation-summary b{display:block;font-size:13px}.preview{margin-top:8px;padding:9px;border:1px solid #eee;border-radius:5px;font-size:11px}.preview-row{display:flex;justify-content:space-between;margin-top:5px}
@@ -39,24 +44,104 @@
 <script>
 const departments=[['FC','Fixed Charges'],['BRM','Ball Room'],['HR','Human Resources'],['MT','Maintenance'],['HK','Housekeeping'],['FB','Food & Beverage']];
 const items=[{id:1,name:'Floor Mat',cat:'IC - Linen',on:50,count:22,diff:-28,status:'Variance',dept:'BRM'},{id:2,name:'Toothpaste',cat:'IC - Guest Supplies',on:10,count:2,diff:-8,status:'Variance',dept:'FB'},{id:3,name:'Showercap',cat:'IC - Guest Supplies',on:2957,count:2,diff:-2955,status:'Variance',dept:'BRM'},{id:4,name:'Pencil 2B',cat:'IC - Printing & Stationery',on:12,count:12,diff:0,status:'No Diff',dept:'HR'},{id:5,name:'A4 Paper 70gsm',cat:'IC - Printing & Stationery',on:150,count:150,diff:0,status:'No Diff',dept:'HR'},{id:6,name:'Hand Soap 500ml',cat:'IC - Guest Supplies',on:30,count:25,diff:-5,status:'Variance',dept:'FB'},{id:7,name:'Tissue Box',cat:'IC - Guest Supplies',on:60,count:60,diff:0,status:'No Diff',dept:'FB'},{id:8,name:'Laundry Bag',cat:'IC - Laundry',on:40,count:38,diff:-2,status:'Variance',dept:'HK'}];
-let selected=new Set([2,3,6,7]),focused=3,splits=[{dept:'BRM',qty:1955,note:'Used in ballroom amenities'},{dept:'HK',qty:1000,note:'Housekeeping stock usage'}],updatedDepartments=new Set();
+let selected=new Set([2,3,6,7]),focused=3,updatedDepartments=new Set(),splitsByItem={};
+const defaultShowercapSplits=[{dept:'BRM',qty:1955,note:'Used in ballroom amenities'},{dept:'HK',qty:1000,note:'Housekeeping stock usage'}];
+try{splitsByItem=JSON.parse(localStorage.getItem('cycleCountSplitAllocations')||'{}')}catch(error){splitsByItem={}}
+if(!splitsByItem[3])splitsByItem[3]=defaultShowercapSplits;
+let splits=(splitsByItem[focused]||[]).map(s=>({...s}));
 const deptOptions=selectedCode=>departments.map(([c,n])=>`<option value="${c}" ${c===selectedCode?'selected':''}>${c} | ${n}</option>`).join('');
 const deptLabel=code=>{const found=departments.find(([c])=>c===code);return found?`${found[0]} | ${found[1]}`:code};
 document.getElementById('bulkDepartment').innerHTML=deptOptions('HK');
-function openModal(id){document.getElementById(id).classList.add('show');document.body.style.overflow='hidden'}function closeModal(id){document.getElementById(id).classList.remove('show')}
-document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeModal(b.dataset.close));document.querySelectorAll('.modal-backdrop').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
-document.getElementById('openBulk').onclick=()=>{if(!selected.size){showToast('Please select at least one item.');return}renderSelection();openModal('bulkModal')};document.getElementById('openSplit').onclick=()=>{renderSplit();openModal('splitModal')};
-function renderItems(){const q=document.getElementById('search').value.toLowerCase();document.getElementById('itemRows').innerHTML=items.filter(i=>!q||i.name.toLowerCase().includes(q)||i.cat.toLowerCase().includes(q)||deptLabel(i.dept).toLowerCase().includes(q)).map(i=>`<tr class="${selected.has(i.id)?'selected':''}" data-id="${i.id}"><td><input class="rowCheck" type="checkbox" data-id="${i.id}" ${selected.has(i.id)?'checked':''}></td><td><button class="icon-btn focusBtn" data-id="${i.id}" style="font-size:11px;font-weight:600;text-align:left">${i.name}</button></td><td>${i.cat}</td><td class="num">${i.on.toFixed(4)}</td><td class="num">${i.count.toFixed(4)}</td><td class="num ${i.diff<0?'red':''}">${i.diff.toFixed(4)}</td><td><span class="status ${i.status==='Variance'?'variance':'nodiff'}">${i.status}</span></td><td><span class="department-badge ${updatedDepartments.has(i.id)?'updated':''}">${deptLabel(i.dept)}</span></td></tr>`).join('');bindRows();renderSelection()}
-function bindRows(){document.querySelectorAll('.rowCheck').forEach(c=>c.onchange=()=>{const id=+c.dataset.id;c.checked?selected.add(id):selected.delete(id);renderItems()});document.querySelectorAll('.focusBtn').forEach(b=>b.onclick=()=>{focused=+b.dataset.id;renderSplit();openModal('splitModal')})}
+
+function openModal(id){document.getElementById(id).classList.add('show');document.body.style.overflow='hidden'}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeModal(b.dataset.close));
+document.querySelectorAll('.modal-backdrop').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
+document.getElementById('openBulk').onclick=()=>{if(!selected.size){showToast('Please select at least one item.');return}renderSelection();openModal('bulkModal')};
+document.getElementById('openSplit').onclick=()=>{loadFocusedSplits();renderSplit();openModal('splitModal')};
+
+function itemRowsHtml(item){
+  const savedSplits=splitsByItem[item.id];
+  if(Array.isArray(savedSplits)&&savedSplits.length){
+    return savedSplits.map((split,index)=>`<tr class="split-row ${index===0?'first-split':''} ${selected.has(item.id)?'selected':''}" data-id="${item.id}">
+      <td>${index===0?`<input class="rowCheck" type="checkbox" data-id="${item.id}" ${selected.has(item.id)?'checked':''}>`:''}</td>
+      <td><div class="split-item">${index===0?`<button class="icon-btn focusBtn" data-id="${item.id}" style="font-size:11px;font-weight:600;text-align:left">${item.name}</button>`:`<span class="split-line">${index+1}</span><span>${item.name}</span>`}</div>${split.note?`<span class="split-note">${split.note}</span>`:''}</td>
+      <td>${item.cat}</td>
+      <td class="num">${index===0?item.on.toFixed(4):''}</td>
+      <td class="num">${index===0?item.count.toFixed(4):''}</td>
+      <td class="num split-qty">-${Number(split.qty).toFixed(4)}</td>
+      <td><span class="status splitstatus">Split ${index+1}/${savedSplits.length}</span></td>
+      <td><span class="department-badge updated">${deptLabel(split.dept)}</span></td>
+    </tr>`).join('');
+  }
+  return `<tr class="${selected.has(item.id)?'selected':''}" data-id="${item.id}">
+    <td><input class="rowCheck" type="checkbox" data-id="${item.id}" ${selected.has(item.id)?'checked':''}></td>
+    <td><button class="icon-btn focusBtn" data-id="${item.id}" style="font-size:11px;font-weight:600;text-align:left">${item.name}</button></td>
+    <td>${item.cat}</td><td class="num">${item.on.toFixed(4)}</td><td class="num">${item.count.toFixed(4)}</td>
+    <td class="num ${item.diff<0?'red':''}">${item.diff.toFixed(4)}</td>
+    <td><span class="status ${item.status==='Variance'?'variance':'nodiff'}">${item.status}</span></td>
+    <td><span class="department-badge ${updatedDepartments.has(item.id)?'updated':''}">${deptLabel(item.dept)}</span></td>
+  </tr>`;
+}
+function renderItems(){
+  const q=document.getElementById('search').value.toLowerCase();
+  document.getElementById('itemRows').innerHTML=items.filter(i=>!q||i.name.toLowerCase().includes(q)||i.cat.toLowerCase().includes(q)||deptLabel(i.dept).toLowerCase().includes(q)||(splitsByItem[i.id]||[]).some(s=>deptLabel(s.dept).toLowerCase().includes(q))).map(itemRowsHtml).join('');
+  bindRows();renderSelection()
+}
+function bindRows(){
+  document.querySelectorAll('.rowCheck').forEach(c=>c.onchange=()=>{const id=+c.dataset.id;c.checked?selected.add(id):selected.delete(id);renderItems()});
+  document.querySelectorAll('.focusBtn').forEach(b=>b.onclick=()=>{focused=+b.dataset.id;loadFocusedSplits();renderSplit();openModal('splitModal')})
+}
 function renderSelection(){document.getElementById('selectedCount').textContent=`${selected.size} selected`;document.getElementById('selectedTags').innerHTML=[...selected].map(id=>`<span class="tag">${items.find(i=>i.id===id).name}</span>`).join('')}
-function renderSplit(){const item=items.find(i=>i.id===focused);document.getElementById('focusedName').textContent=item.name;document.getElementById('focusSummary').innerHTML=`<div>On Hand<b>${item.on.toFixed(4)}</b></div><div>Count<b>${item.count.toFixed(4)}</b></div><div>Total Difference<b class="red">${item.diff.toFixed(4)}</b></div><div>Category<b>${item.cat}</b></div><div>UOM<b>Unit</b></div>`;document.getElementById('splitRows').innerHTML=splits.map((s,idx)=>`<tr><td>${idx+1}</td><td><select data-idx="${idx}" class="splitDept">${deptOptions(s.dept)}</select></td><td><input data-idx="${idx}" class="splitQty" type="number" value="${s.qty.toFixed(4)}"></td><td><input data-idx="${idx}" class="splitNote" value="${s.note}"></td><td><button data-idx="${idx}" class="delete material-symbols-rounded">delete</button></td></tr>`).join('');bindSplit();calcSplit()}
-function bindSplit(){document.querySelectorAll('.splitDept').forEach(e=>e.onchange=()=>{splits[+e.dataset.idx].dept=e.value;calcSplit()});document.querySelectorAll('.splitQty').forEach(e=>e.oninput=()=>{splits[+e.dataset.idx].qty=+e.value||0;calcSplit()});document.querySelectorAll('.splitNote').forEach(e=>e.oninput=()=>splits[+e.dataset.idx].note=e.value);document.querySelectorAll('.delete').forEach(e=>e.onclick=()=>{splits.splice(+e.dataset.idx,1);renderSplit()})}
-function calcSplit(){const item=items.find(i=>i.id===focused),allocated=splits.reduce((a,s)=>a+s.qty,0),remaining=Math.abs(item.diff)-allocated;document.getElementById('totalDifference').textContent=item.diff.toFixed(4);document.getElementById('allocated').textContent=(-allocated).toFixed(4);document.getElementById('remaining').textContent=remaining.toFixed(4);document.getElementById('remaining').className=remaining===0?'green':'red';document.getElementById('preview').innerHTML=splits.map(s=>`<div class="preview-row"><span>${deptLabel(s.dept)}</span><b class="red">-${s.qty.toFixed(4)}</b></div>`).join('')}
-document.getElementById('applyBulk').onclick=()=>{const d=document.getElementById('bulkDepartment').value;items.forEach(i=>{if(selected.has(i.id)){i.dept=d;updatedDepartments.add(i.id)}});try{localStorage.setItem('cycleCountItemDepartments',JSON.stringify(Object.fromEntries(items.map(i=>[i.id,i.dept]))))}catch(error){}renderItems();closeModal('bulkModal');showToast(`Department changed to ${deptLabel(d)} for ${selected.size} selected item(s).`)};
-document.getElementById('saveSplit').onclick=()=>{const item=items.find(i=>i.id===focused),remaining=Math.abs(item.diff)-splits.reduce((a,s)=>a+s.qty,0);if(Math.abs(remaining)>.00001){showToast('Remaining allocation must be 0.0000 before saving.');return}try{localStorage.setItem(`cycleCountSplits_${focused}`,JSON.stringify(splits))}catch(error){}closeModal('splitModal');showToast(`Split allocation saved for ${item.name}.`)};
-document.getElementById('addSplit').onclick=()=>{splits.push({dept:'HK',qty:0,note:''});renderSplit()};document.getElementById('selectVariance').onclick=()=>{selected=new Set(items.filter(i=>i.status==='Variance').map(i=>i.id));renderItems()};document.getElementById('clearSelection').onclick=()=>{selected.clear();renderItems()};document.getElementById('selectAll').onchange=e=>{selected=e.target.checked?new Set(items.map(i=>i.id)):new Set();renderItems()};document.getElementById('search').oninput=renderItems;
+function loadFocusedSplits(){
+  const existing=splitsByItem[focused];
+  if(Array.isArray(existing)&&existing.length)splits=existing.map(s=>({...s}));
+  else{const item=items.find(i=>i.id===focused);splits=[{dept:item.dept,qty:Math.abs(item.diff),note:''}]}
+}
+function renderSplit(){
+  const item=items.find(i=>i.id===focused);
+  document.getElementById('focusedName').textContent=item.name;
+  document.getElementById('focusSummary').innerHTML=`<div>On Hand<b>${item.on.toFixed(4)}</b></div><div>Count<b>${item.count.toFixed(4)}</b></div><div>Total Difference<b class="red">${item.diff.toFixed(4)}</b></div><div>Category<b>${item.cat}</b></div><div>UOM<b>Unit</b></div>`;
+  document.getElementById('splitRows').innerHTML=splits.map((s,idx)=>`<tr><td>${idx+1}</td><td><select data-idx="${idx}" class="splitDept">${deptOptions(s.dept)}</select></td><td><input data-idx="${idx}" class="splitQty" type="number" min="0" step="0.0001" value="${Number(s.qty).toFixed(4)}"></td><td><input data-idx="${idx}" class="splitNote" value="${s.note||''}"></td><td><button data-idx="${idx}" class="delete material-symbols-rounded">delete</button></td></tr>`).join('');
+  bindSplit();calcSplit()
+}
+function bindSplit(){
+  document.querySelectorAll('.splitDept').forEach(e=>e.onchange=()=>{splits[+e.dataset.idx].dept=e.value;calcSplit()});
+  document.querySelectorAll('.splitQty').forEach(e=>e.oninput=()=>{splits[+e.dataset.idx].qty=+e.value||0;calcSplit()});
+  document.querySelectorAll('.splitNote').forEach(e=>e.oninput=()=>splits[+e.dataset.idx].note=e.value);
+  document.querySelectorAll('.delete').forEach(e=>e.onclick=()=>{splits.splice(+e.dataset.idx,1);renderSplit()})
+}
+function calcSplit(){
+  const item=items.find(i=>i.id===focused),allocated=splits.reduce((a,s)=>a+Number(s.qty||0),0),remaining=Math.abs(item.diff)-allocated;
+  document.getElementById('totalDifference').textContent=item.diff.toFixed(4);
+  document.getElementById('allocated').textContent=(-allocated).toFixed(4);
+  document.getElementById('remaining').textContent=remaining.toFixed(4);
+  document.getElementById('remaining').className=Math.abs(remaining)<.00001?'green':'red';
+  document.getElementById('preview').innerHTML=splits.map(s=>`<div class="preview-row"><span>${deptLabel(s.dept)}</span><b class="red">-${Number(s.qty).toFixed(4)}</b></div>`).join('')
+}
+document.getElementById('applyBulk').onclick=()=>{
+  const d=document.getElementById('bulkDepartment').value;
+  items.forEach(i=>{if(selected.has(i.id)){i.dept=d;updatedDepartments.add(i.id);if(!splitsByItem[i.id])splitsByItem[i.id]=[]}});
+  try{localStorage.setItem('cycleCountItemDepartments',JSON.stringify(Object.fromEntries(items.map(i=>[i.id,i.dept]))))}catch(error){}
+  renderItems();closeModal('bulkModal');showToast(`Department changed to ${deptLabel(d)} for ${selected.size} selected item(s).`)
+};
+document.getElementById('saveSplit').onclick=()=>{
+  const item=items.find(i=>i.id===focused),remaining=Math.abs(item.diff)-splits.reduce((a,s)=>a+Number(s.qty||0),0);
+  if(!splits.length){showToast('Please add at least one split allocation line.');return}
+  if(Math.abs(remaining)>.00001){showToast('Remaining allocation must be 0.0000 before saving.');return}
+  splitsByItem[focused]=splits.map(s=>({dept:s.dept,qty:Number(s.qty),note:s.note||''}));
+  try{localStorage.setItem('cycleCountSplitAllocations',JSON.stringify(splitsByItem))}catch(error){}
+  renderItems();closeModal('splitModal');showToast(`${splits.length} split allocation line(s) displayed for ${item.name}.`)
+};
+document.getElementById('addSplit').onclick=()=>{splits.push({dept:'HK',qty:0,note:''});renderSplit()};
+document.getElementById('selectVariance').onclick=()=>{selected=new Set(items.filter(i=>i.status==='Variance').map(i=>i.id));renderItems()};
+document.getElementById('clearSelection').onclick=()=>{selected.clear();renderItems()};
+document.getElementById('selectAll').onchange=e=>{selected=e.target.checked?new Set(items.map(i=>i.id)):new Set();renderItems()};
+document.getElementById('search').oninput=renderItems;
 try{const saved=JSON.parse(localStorage.getItem('cycleCountItemDepartments')||'{}');items.forEach(i=>{if(saved[i.id])i.dept=saved[i.id]})}catch(error){}
-document.getElementById('approve').onclick=()=>finish('Completed');document.getElementById('reject').onclick=()=>finish('Rejected');function finish(status){localStorage.setItem('cycleCountStatus',status);showToast(`Cycle Count ${status.toLowerCase()} successfully.`);setTimeout(()=>location.href=`cycle-count.html?status=${status}`,800)}function showToast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
-renderItems();renderSplit();
+document.getElementById('approve').onclick=()=>finish('Completed');document.getElementById('reject').onclick=()=>finish('Rejected');
+function finish(status){localStorage.setItem('cycleCountStatus',status);showToast(`Cycle Count ${status.toLowerCase()} successfully.`);setTimeout(()=>location.href=`cycle-count.html?status=${status}`,800)}
+function showToast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+renderItems();loadFocusedSplits();renderSplit();
 </script>
 </body></html>
