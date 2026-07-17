@@ -44,6 +44,9 @@ body{font-size:14px}
 .transaction-title,.module-title{font-size:13px!important}.transaction-meta,.module-subtitle{font-size:11px!important}
 .modal{max-height:92vh!important}.modal-head{height:52px!important}.modal-title{font-size:16px!important}.modal-body{padding:14px!important}.modal-foot{min-height:60px!important}
 
+/* Remove the extra separator above the first split-allocation row */
+.split-row.first-split td{border-top:0!important}
+
 /* Advance Search category alignment */
 .multi-option{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;text-align:left!important}
 .multi-option input[type="checkbox"]{width:18px!important;height:18px!important;min-width:18px!important;flex:0 0 18px!important;margin:0!important;padding:0!important}
