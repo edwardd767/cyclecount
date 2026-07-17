@@ -184,4 +184,27 @@
       showToast(`Department changed to ${deptLabel(department)} for ${updatedCount} selected item(s).`);
     };
   }
+
+  /* A single allocation line is not a split. Always render it as a normal variance row. */
+  function normalizeSingleAllocationRows() {
+    const rows = document.querySelectorAll('#itemRows tr');
+    rows.forEach(row => {
+      const status = row.querySelector('.status');
+      if (!status || status.textContent.trim() !== 'Split 1/1') return;
+
+      status.textContent = 'Variance';
+      status.classList.remove('splitstatus');
+      status.classList.add('variance');
+
+      row.classList.remove('split-row', 'first-split');
+      const differenceCell = row.querySelector('.split-qty');
+      if (differenceCell) differenceCell.classList.remove('split-qty');
+    });
+  }
+
+  if (reconciliationRows) {
+    normalizeSingleAllocationRows();
+    const rowObserver = new MutationObserver(normalizeSingleAllocationRows);
+    rowObserver.observe(reconciliationRows, { childList: true, subtree: true });
+  }
 })();
