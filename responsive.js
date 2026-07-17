@@ -143,6 +143,10 @@
     refreshSortHeaders();
   }
 
+  /* Rename the Advance Search action button. */
+  const applyCategoryFilterButton = document.getElementById('applyCategoryFilter');
+  if (applyCategoryFilterButton) applyCategoryFilterButton.textContent = 'Confirm';
+
   /* Simplify the Bulk Department Change popup. */
   const bulkModal = document.getElementById('bulkModal');
   const bulkChecks = bulkModal?.querySelector('.checks');
