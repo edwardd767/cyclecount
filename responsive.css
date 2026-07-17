@@ -37,7 +37,8 @@ body{font-size:14px}
 .table th,.table td{padding:9px 8px!important}
 .focusBtn{font-size:12px!important}
 .status,.department-badge{font-size:10px!important;padding:4px 7px!important}
-.pager{padding:9px 12px!important;font-size:12px!important}
+.pager{padding:9px 12px!important;font-size:12px!important;justify-content:flex-start!important}
+.pager > :not(#pagerSummary){display:none!important}
 .action-panel-body{padding:10px 12px!important}.open-action{height:40px!important;min-width:160px!important;font-size:13px!important}
 .footer button{height:44px!important;min-width:140px!important;font-size:15px!important}
 .transaction-card,.module-card{min-height:68px!important;padding-top:9px!important;padding-bottom:9px!important}
