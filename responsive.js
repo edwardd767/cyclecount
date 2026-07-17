@@ -38,6 +38,7 @@
       .sort-indicator{display:inline-flex;min-width:14px;color:#8a8a8a;font-size:11px;line-height:1}
       .sort-button.active .sort-indicator{color:var(--orange,#ff8700)}
       .sort-button:focus-visible{outline:2px solid var(--orange,#ff8700);outline-offset:3px;border-radius:2px}
+      .single-allocation-variance{color:red!important;font-weight:400!important}
     `;
     document.head.appendChild(style);
 
@@ -198,7 +199,10 @@
 
       row.classList.remove('split-row', 'first-split');
       const differenceCell = row.querySelector('.split-qty');
-      if (differenceCell) differenceCell.classList.remove('split-qty');
+      if (differenceCell) {
+        differenceCell.classList.remove('split-qty');
+        differenceCell.classList.add('red', 'single-allocation-variance');
+      }
     });
   }
 
