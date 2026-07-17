@@ -38,7 +38,6 @@
       .sort-indicator{display:inline-flex;min-width:14px;color:#8a8a8a;font-size:11px;line-height:1}
       .sort-button.active .sort-indicator{color:var(--orange,#ff8700)}
       .sort-button:focus-visible{outline:2px solid var(--orange,#ff8700);outline-offset:3px;border-radius:2px}
-      .single-allocation-difference{color:var(--red,#ff123f);font-weight:400!important}
     `;
     document.head.appendChild(style);
 
@@ -140,31 +139,49 @@
       });
     });
 
-    const presentSingleAllocationAsVariance = () => {
-      reconciliationRows.querySelectorAll('tr').forEach(row => {
-        const status = row.querySelector('.splitstatus');
-        if (!status || status.textContent.trim() !== 'Split 1/1') return;
+    refreshSortHeaders();
+  }
 
-        status.textContent = 'Variance';
-        status.classList.remove('splitstatus');
-        status.classList.add('variance');
-        row.classList.remove('split-row', 'first-split');
-        row.classList.add('single-allocation-row');
+  /* Ensure bulk department changes also update saved split-allocation lines. */
+  const applyBulkButton = document.getElementById('applyBulk');
+  if (
+    applyBulkButton &&
+    typeof items !== 'undefined' &&
+    typeof selected !== 'undefined' &&
+    typeof splitsByItem !== 'undefined'
+  ) {
+    applyBulkButton.onclick = () => {
+      const department = document.getElementById('bulkDepartment').value;
+      let updatedCount = 0;
 
-        const difference = row.querySelector('.split-qty');
-        if (difference) {
-          difference.classList.remove('split-qty');
-          difference.classList.add('single-allocation-difference');
+      items.forEach(item => {
+        if (!selected.has(item.id)) return;
+
+        item.dept = department;
+        updatedDepartments.add(item.id);
+        updatedCount += 1;
+
+        if (Array.isArray(splitsByItem[item.id]) && splitsByItem[item.id].length) {
+          splitsByItem[item.id] = splitsByItem[item.id].map(line => ({
+            ...line,
+            dept: department
+          }));
         }
       });
+
+      try {
+        localStorage.setItem(
+          'cycleCountItemDepartments',
+          JSON.stringify(Object.fromEntries(items.map(item => [item.id, item.dept])))
+        );
+        localStorage.setItem('cycleCountSplitAllocations', JSON.stringify(splitsByItem));
+      } catch (error) {
+        console.warn('Unable to save department changes.', error);
+      }
+
+      renderItems();
+      closeModal('bulkModal');
+      showToast(`Department changed to ${deptLabel(department)} for ${updatedCount} selected item(s).`);
     };
-
-    presentSingleAllocationAsVariance();
-    new MutationObserver(presentSingleAllocationAsVariance).observe(reconciliationRows, {
-      childList: true,
-      subtree: true
-    });
-
-    refreshSortHeaders();
   }
 })();
