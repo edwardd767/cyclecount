@@ -143,8 +143,15 @@
     refreshSortHeaders();
   }
 
-  /* Ensure bulk department changes also update saved split-allocation lines. */
+  /* Simplify the Bulk Department Change popup. */
+  const bulkModal = document.getElementById('bulkModal');
+  const bulkChecks = bulkModal?.querySelector('.checks');
+  if (bulkChecks) bulkChecks.remove();
+
   const applyBulkButton = document.getElementById('applyBulk');
+  if (applyBulkButton) applyBulkButton.textContent = 'Confirm';
+
+  /* Ensure bulk department changes also update saved split-allocation lines. */
   if (
     applyBulkButton &&
     typeof items !== 'undefined' &&
