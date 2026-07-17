@@ -38,7 +38,6 @@ body{font-size:14px}
 .focusBtn{font-size:12px!important}
 .status,.department-badge{font-size:10px!important;padding:4px 7px!important}
 .pager{padding:9px 12px!important;font-size:12px!important}
-.pager>span:last-child{display:none!important}
 .action-panel-body{padding:10px 12px!important}.open-action{height:40px!important;min-width:160px!important;font-size:13px!important}
 .footer button{height:44px!important;min-width:140px!important;font-size:15px!important}
 .transaction-card,.module-card{min-height:68px!important;padding-top:9px!important;padding-bottom:9px!important}
@@ -52,6 +51,13 @@ body{font-size:14px}
 .multi-option{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;text-align:left!important}
 .multi-option input[type="checkbox"]{width:18px!important;height:18px!important;min-width:18px!important;flex:0 0 18px!important;margin:0!important;padding:0!important}
 .multi-option span{display:inline-block!important;flex:0 1 auto!important;margin:0!important}
+
+/* Split Allocation: remove Notes and rebalance remaining columns */
+.split-table th:nth-child(4),.split-table td:nth-child(4){display:none!important}
+.split-table th:nth-child(1),.split-table td:nth-child(1){width:5%!important}
+.split-table th:nth-child(2),.split-table td:nth-child(2){width:48%!important}
+.split-table th:nth-child(3),.split-table td:nth-child(3){width:40%!important}
+.split-table th:nth-child(5),.split-table td:nth-child(5){width:7%!important;text-align:center!important}
 
 /* Tablet */
 @media (max-width:1100px){
@@ -95,7 +101,7 @@ body{font-size:14px}
   .multi-menu{position:static!important;max-height:36vh!important;overflow:auto!important;margin-top:6px!important}
   .summary-grid{grid-template-columns:repeat(2,1fr)!important}
   .allocation-summary{grid-template-columns:1fr!important}
-  .split-table{min-width:680px!important}
+  .split-table{min-width:560px!important}
   .modal-foot{position:sticky!important;bottom:0!important}.modal-btn{flex:1!important;min-width:0!important}
   .transactions,.modules{gap:6px!important}.transaction-card,.module-card{grid-template-columns:44px 1fr 28px!important}
   .stock-total{display:none!important}
