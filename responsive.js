@@ -197,6 +197,25 @@
     };
   }
 
+  /* Keep allocated quantities displayed with four decimal places after entry. */
+  document.addEventListener('focusout', event => {
+    const input = event.target.closest('.splitQty');
+    if (!input) return;
+
+    const value = Number(input.value);
+    input.value = Number.isFinite(value) ? value.toFixed(4) : '0.0000';
+  });
+
+  document.addEventListener('keydown', event => {
+    const input = event.target.closest('.splitQty');
+    if (!input || event.key !== 'Enter') return;
+
+    event.preventDefault();
+    const value = Number(input.value);
+    input.value = Number.isFinite(value) ? value.toFixed(4) : '0.0000';
+    input.blur();
+  });
+
   /* A single allocation line is not a split. Always render it as a normal variance row. */
   function normalizeSingleAllocationRows() {
     const rows = document.querySelectorAll('#itemRows tr');
