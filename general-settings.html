@@ -29,6 +29,7 @@
     .toast{position:fixed;left:50%;bottom:25px;z-index:150;min-width:300px;max-width:calc(100vw - 40px);padding:12px 17px;border-radius:8px;background:rgba(28,28,28,.96);color:#fff;text-align:center;font-size:14px;opacity:0;visibility:hidden;transform:translate(-50%,18px);transition:.18s ease;box-shadow:0 8px 28px rgba(0,0,0,.25)}.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}body.sidebar-collapsed .sidebar{transform:translateX(-100%)}body.sidebar-collapsed .main{left:0}
     @media(max-width:1100px){:root{--sidebar-width:250px}.main{padding-left:18px}.side-nav a{font-size:15px}.profile-name{font-size:15px}.row-name{font-size:15px}.row-subtitle{font-size:13px}}@media(max-width:760px){:root{--sidebar-width:250px}.sidebar{box-shadow:4px 0 16px rgba(0,0,0,.22)}.main{left:0;padding:18px 8px}body:not(.sidebar-open) .sidebar{transform:translateX(-100%)}body.sidebar-open .sidebar{transform:translateX(0)}.category-list{padding-left:18px}.category-row.child{margin-left:25px}.floating-add{width:58px;height:58px}.edit-dialog{width:calc(100vw - 24px)}.text-input,.select-input{font-size:16px}}
   </style>
+  <link rel="stylesheet" href="responsive.css?v=20260717">
 </head>
 <body>
   <header class="topbar"><button id="menuButton" class="hamburger" type="button" aria-label="Toggle menu"><span class="material-symbols-rounded">menu</span></button><div class="brand">HotelX</div></header>
@@ -89,5 +90,6 @@
     document.getElementById('confirmButton').addEventListener('click',()=>{if(selectedRow){selectedRow.dataset.name=nameInput.value;selectedRow.dataset.code=glInput.value;selectedRow.dataset.cycleCode=cycleCountInput.value;selectedRow.querySelector('.row-name').textContent=nameInput.value;const subtitle=selectedRow.querySelector('.row-subtitle');if(subtitle)subtitle.textContent=glInput.value}closeModal();showToast(cycleCountInput.value?'Item Category and Cycle Count Account Code updated successfully.':'Item Category updated without a Cycle Count Account Code.')});
     function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}
   </script>
+  <script src="responsive.js?v=20260717"></script>
 </body>
 </html>

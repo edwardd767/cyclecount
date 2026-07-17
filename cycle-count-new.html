@@ -20,6 +20,7 @@
     @media(max-width:1100px){:root{--sidebar-width:250px}.main{padding-left:18px}.side-nav a{font-size:15px}.two-columns{gap:18px}.action-button{min-width:130px}.stock-row{grid-template-columns:45px minmax(210px,1fr) minmax(150px,230px) 75px}}
     @media(max-width:760px){:root{--sidebar-width:250px}.sidebar{box-shadow:4px 0 16px rgba(0,0,0,.20)}.main{left:0;padding:18px 8px 100px}.action-bar{left:0;height:84px;padding:0 10px;gap:9px}.action-button{min-width:0;flex:1;padding:0 10px;font-size:15px}.two-columns{grid-template-columns:1fr;gap:0}.stock-toolbar{grid-template-columns:1fr}.category-menu{left:0;right:auto;width:100%}.stock-row{grid-template-columns:34px minmax(0,1fr) 120px}.stock-uom{grid-column:3;text-align:right}.stock-category{font-size:11px}.qty-input{height:36px;font-size:14px}body:not(.sidebar-open) .sidebar{transform:translateX(-100%)}body.sidebar-open .sidebar{transform:translateX(0)}}
   </style>
+  <link rel="stylesheet" href="responsive.css?v=20260717">
 </head>
 <body>
   <header class="topbar"><button id="menuButton" class="hamburger" type="button" aria-label="Toggle menu"><span class="material-symbols-rounded">menu</span></button><div class="brand">HotelX</div></header>
@@ -54,5 +55,6 @@
     document.getElementById('submitButton').addEventListener('click',()=>{syncVisibleQuantities();const documentRef=document.getElementById('documentRef').value.trim()||'Cycle Count - 12345',description=document.getElementById('description').value.trim()||'Cycle Count as at 31 Jan 2026';const submitted={documentRef,departmentCode:departmentButton.dataset.value||'BRM',departmentName:departmentButton.dataset.name||'Ball Room',description,docDate:document.getElementById('docDateText').value,transactionDate:document.getElementById('transactionDateText').value,status:'Submitted',items:stockItems.map(item=>({...item}))};try{localStorage.setItem('cycleCountSubmitted',JSON.stringify(submitted));localStorage.setItem('cycleCountStatus','Submitted')}catch(error){console.warn('Storage unavailable',error)}window.location.assign('cycle-count-document.html')});
     function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}
   </script>
+  <script src="responsive.js?v=20260717"></script>
 </body>
 </html>

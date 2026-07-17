@@ -36,6 +36,7 @@
     @media(max-width:760px){:root{--sidebar-width:250px}.main{left:0;padding:10px 6px 20px}.action-bar{left:0;height:84px;padding:0 10px;gap:9px}.action-button{min-width:0;flex:1;padding:0 10px;font-size:15px}.sidebar{box-shadow:4px 0 16px rgba(0,0,0,.20)}body:not(.sidebar-open) .sidebar{transform:translateX(-100%)}body.sidebar-open .sidebar{transform:translateX(0)}.report{min-width:820px}.report-shell{overflow-x:auto}}
     @media print{.topbar,.sidebar,.module-header,.action-bar,.toast{display:none!important}.main{position:static;overflow:visible;padding:0;background:#fff}.report-shell{width:100%;margin:0;box-shadow:none}.report{padding:10mm}.report-table{font-size:9px}}
   </style>
+  <link rel="stylesheet" href="responsive.css?v=20260717">
 </head>
 <body>
   <header class="topbar"><button id="menuButton" class="hamburger" type="button" aria-label="Toggle menu"><span class="material-symbols-rounded">menu</span></button><div class="brand">HotelX</div></header>
@@ -64,5 +65,6 @@
     document.getElementById('downloadButton').addEventListener('click',()=>{const element=document.getElementById('report');if(window.html2pdf){html2pdf().set({margin:6,filename:'Cycle_Count_CC2026010002.pdf',image:{type:'jpeg',quality:.98},html2canvas:{scale:2},jsPDF:{unit:'mm',format:'a4',orientation:'landscape'},pagebreak:{mode:['css','legacy']}}).from(element).save()}else{window.print()}});
     function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}
   </script>
+  <script src="responsive.js?v=20260717"></script>
 </body>
 </html>
