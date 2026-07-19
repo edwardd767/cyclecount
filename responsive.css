@@ -104,7 +104,11 @@ body{font-size:14px}
   .allocation-summary{grid-template-columns:1fr!important}
   .split-table{min-width:560px!important}
   .modal-foot{position:sticky!important;bottom:0!important}.modal-btn{flex:1!important;min-width:0!important}
-  .transactions,.modules{gap:6px!important}.transaction-card,.module-card{grid-template-columns:44px 1fr 28px!important}
+  .transactions,.modules{gap:6px!important}
+  .transaction-card{grid-template-columns:44px minmax(0,1fr) 28px!important;align-items:center!important}
+  .transaction-card > span:nth-child(3){display:none!important}
+  .transaction-card .card-arrow{grid-column:3!important;grid-row:1!important;align-self:center!important;justify-self:center!important;margin:0!important}
+  .module-card{grid-template-columns:44px 1fr 28px!important}
   .stock-total{display:none!important}
 }
 
